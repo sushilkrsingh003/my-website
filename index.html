@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sushil Kumar Singh — Finance &amp; Investment Research</title>
+<meta name="description" content="Portfolio of Sushil Kumar Singh, BBA Finance graduate specialising in equity research, investment banking, FP&A and risk consulting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   TOKENS
+=================================================================== */
+:root{
+  --navy-950:#081226;
+  --navy-900:#0E1E3A;
+  --navy-800:#16294D;
+  --navy-700:#223862;
+  --gold-500:#C7A252;
+  --gold-300:#E3C878;
+  --paper:#F2EFE6;
+  --paper-2:#EAE6D8;
+  --ink:#10192C;
+  --slate:#7C8AA0;
+  --slate-dark:#57647A;
+
+  --serif:'Spectral', Georgia, serif;
+  --sans:'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+  --mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --max:1120px;
+  --max-narrow:760px;
+  --header-h:64px;
+  --ticker-h:34px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top: calc(var(--header-h) + var(--ticker-h) + 12px);}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{font-family:var(--serif); margin:0; font-weight:600; line-height:1.15;}
+p{margin:0;}
+a{color:inherit; text-decoration:none;}
+ul,ol{margin:0; padding:0; list-style:none;}
+button{font:inherit; cursor:pointer;}
+
+img,svg{max-width:100%; display:block;}
+
+:focus-visible{
+  outline:2px solid var(--gold-500);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+.container{max-width:var(--max); margin:0 auto; padding:0 28px;}
+.container.narrow{max-width:var(--max-narrow);}
+
+.section{padding:88px 0;}
+.section-light{background:var(--paper); color:var(--ink);}
+.section-dark{background:var(--navy-900); color:#EDEFF4;}
+
+.section-label{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:0.02em;
+  color:var(--gold-500);
+  margin-bottom:28px;
+}
+.section-dark .section-label{color:var(--gold-300);}
+
+/* ===================================================================
+   BUTTONS
+=================================================================== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 24px;
+  border-radius:2px;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:15px;
+  border:1px solid transparent;
+  transition:background-color .18s ease, color .18s ease, border-color .18s ease;
+  white-space:nowrap;
+}
+.btn-gold{
+  background:var(--gold-500);
+  color:var(--navy-950);
+}
+.btn-gold:hover{background:var(--gold-300);}
+.btn-ghost{
+  border-color:var(--navy-700);
+  color:inherit;
+}
+.hero .btn-ghost{border-color:rgba(255,255,255,0.25); color:#fff;}
+.btn-ghost:hover{border-color:var(--gold-500); color:var(--gold-300);}
+.btn-small{padding:9px 16px; font-size:13px;}
+
+/* ===================================================================
+   HEADER + NAV
+=================================================================== */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(8,18,38,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--navy-700);
+  height:var(--header-h);
+}
+.header-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  height:100%;
+  padding:0 28px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+.brand{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:20px;
+  color:var(--gold-300);
+  letter-spacing:0.03em;
+  margin-right:auto;
+}
+.main-nav{
+  display:flex;
+  gap:26px;
+}
+.main-nav a{
+  font-size:14px;
+  color:#C4CBDA;
+  padding:6px 2px;
+  border-bottom:1px solid transparent;
+  transition:color .15s ease, border-color .15s ease;
+}
+.main-nav a:hover,
+.main-nav a.active{
+  color:#fff;
+  border-color:var(--gold-500);
+}
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:32px;
+  height:32px;
+  background:none;
+  border:none;
+  padding:0;
+}
+.nav-toggle span{
+  display:block;
+  height:2px;
+  width:100%;
+  background:#EDEFF4;
+}
+
+/* ===================================================================
+   TICKER
+=================================================================== */
+.ticker{
+  height:var(--ticker-h);
+  background:var(--navy-950);
+  border-bottom:1px solid var(--navy-700);
+  overflow:hidden;
+  position:relative;
+}
+.ticker-footer{
+  border-top:1px solid var(--navy-700);
+  border-bottom:none;
+  margin-top:40px;
+}
+.ticker-track{
+  display:flex;
+  align-items:center;
+  height:100%;
+  width:max-content;
+  animation:ticker-scroll 38s linear infinite;
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:0.02em;
+}
+@keyframes ticker-scroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{animation:none; overflow-x:auto;}
+}
+.ticker-item{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 22px;
+  white-space:nowrap;
+  color:#B8C0D2;
+  border-right:1px solid var(--navy-700);
+}
+.ticker-item .tk-name{color:#EDEFF4; font-weight:500;}
+.ticker-item.up{color:#7FC69B;}
+.ticker-item.down{color:#D98B7A;}
+
+/* ===================================================================
+   HERO
+=================================================================== */
+.hero{
+  background:var(--navy-900);
+  color:#fff;
+  padding:80px 0 90px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:56px;
+  align-items:center;
+}
+.hero-kicker{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--gold-300);
+  margin-bottom:18px;
+}
+.hero-name{
+  font-size:clamp(40px, 5.4vw, 68px);
+  color:#fff;
+}
+.hero-line{
+  margin-top:22px;
+  max-width:46ch;
+  font-size:18px;
+  line-height:1.6;
+  color:#C4CBDA;
+}
+.hero-actions{
+  display:flex;
+  gap:14px;
+  margin-top:34px;
+  flex-wrap:wrap;
+}
+.hero-contact{
+  margin-top:36px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:13.5px;
+  color:#9EA9C0;
+}
+.hero-contact a:hover{color:var(--gold-300);}
+.hero-chart{opacity:0.95;}
+.chart-line{
+  stroke-dasharray:900;
+  stroke-dashoffset:900;
+  animation:draw-line 1.6s ease forwards 0.3s;
+}
+@keyframes draw-line{to{stroke-dashoffset:0;}}
+@media (prefers-reduced-motion: reduce){
+  .chart-line{stroke-dashoffset:0; animation:none;}
+}
+
+/* ===================================================================
+   SUMMARY
+=================================================================== */
+.lede{
+  font-size:20px;
+  line-height:1.7;
+  color:#2B3651;
+  max-width:66ch;
+}
+.summary-stats{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+  border-top:1px solid var(--paper-2);
+  padding-top:32px;
+}
+.stat{display:flex; flex-direction:column; gap:6px;}
+.stat-num{
+  font-family:var(--serif);
+  font-size:32px;
+  color:var(--navy-900);
+  font-weight:600;
+}
+.stat-label{
+  font-size:13px;
+  color:var(--slate-dark);
+}
+
+/* ===================================================================
+   TIMELINE (Experience)
+=================================================================== */
+.timeline{
+  position:relative;
+  border-left:1px solid var(--navy-700);
+  padding-left:36px;
+  display:flex;
+  flex-direction:column;
+  gap:52px;
+}
+.timeline-item{position:relative;}
+.timeline-marker{
+  position:absolute;
+  left:-41px;
+  top:6px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--gold-500);
+  box-shadow:0 0 0 4px var(--navy-900), 0 0 0 5px var(--navy-700);
+}
+.timeline-date{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--gold-300);
+  margin-bottom:8px;
+}
+.timeline-content h3{
+  font-size:23px;
+  color:#fff;
+  margin-bottom:6px;
+}
+.timeline-org{
+  color:#9EA9C0;
+  font-size:14.5px;
+  margin-bottom:16px;
+}
+.timeline-content ul{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.timeline-content li{
+  color:#C4CBDA;
+  font-size:15px;
+  line-height:1.6;
+  padding-left:18px;
+  position:relative;
+}
+.timeline-content li::before{
+  content:"";
+  position:absolute;
+  left:0; top:9px;
+  width:6px; height:1px;
+  background:var(--gold-500);
+}
+
+/* ===================================================================
+   PROJECTS
+=================================================================== */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.project-card{
+  background:#fff;
+  border:1px solid var(--paper-2);
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.project-head h3{
+  font-size:19px;
+  color:var(--navy-900);
+  margin-bottom:10px;
+}
+.tag{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:11.5px;
+  color:var(--navy-900);
+  background:var(--paper-2);
+  padding:4px 9px;
+  border-radius:2px;
+}
+.project-card > p{
+  color:var(--slate-dark);
+  font-size:14.5px;
+  line-height:1.65;
+}
+.project-toggle{
+  align-self:flex-start;
+  background:none;
+  border:none;
+  border-bottom:1px solid var(--gold-500);
+  color:var(--navy-900);
+  font-weight:600;
+  font-size:14px;
+  padding:2px 0;
+}
+.project-toggle:hover{color:var(--gold-500);}
+.project-detail{
+  display:grid;
+  grid-template-rows:0fr;
+  overflow:hidden;
+  transition:grid-template-rows .32s ease;
+}
+.project-detail > *{min-height:0; overflow:hidden;}
+.project-card.open .project-detail{grid-template-rows:1fr;}
+.project-detail ul{
+  padding-top:14px;
+  border-top:1px solid var(--paper-2);
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.project-detail li{
+  font-size:14px;
+  color:var(--slate-dark);
+  line-height:1.6;
+  padding-left:16px;
+  position:relative;
+}
+.project-detail li::before{
+  content:"";
+  position:absolute; left:0; top:8px;
+  width:5px; height:1px;
+  background:var(--gold-500);
+}
+.mini-dash{
+  background:var(--navy-900);
+  padding:18px;
+  margin-top:6px;
+}
+.mini-dash-metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--navy-700);
+}
+.mini-dash-metrics dt{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--slate);
+}
+.mini-dash-metrics dd{
+  margin:4px 0 0;
+  font-family:var(--serif);
+  font-size:17px;
+  color:var(--gold-300);
+}
+
+/* ===================================================================
+   SIMULATIONS
+=================================================================== */
+.sim-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.sim-card{
+  border:1px solid var(--navy-700);
+  padding:22px 18px;
+  text-align:left;
+}
+.sim-mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:44px; height:32px;
+  padding:0 8px;
+  font-family:var(--mono);
+  font-size:13px;
+  font-weight:600;
+  color:var(--navy-950);
+  background:var(--gold-500);
+  margin-bottom:16px;
+}
+.sim-card h4{
+  color:#fff;
+  font-size:17px;
+  margin-bottom:6px;
+}
+.sim-card p{
+  font-size:13px;
+  color:var(--gold-300);
+  margin-bottom:10px;
+}
+.sim-desc{
+  font-family:var(--sans);
+  color:#B8C0D2 !important;
+  font-size:13.5px;
+  line-height:1.55;
+}
+
+/* ===================================================================
+   CERTIFICATIONS
+=================================================================== */
+.cert-list{
+  border-top:1px solid var(--paper-2);
+}
+.cert-list li{border-bottom:1px solid var(--paper-2);}
+.cert-list a,
+.cert-static{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding:20px 4px;
+  flex-wrap:wrap;
+}
+.cert-list a{transition:padding-left .15s ease;}
+.cert-list a:hover{padding-left:10px; color:var(--navy-900);}
+.cert-name{
+  font-family:var(--serif);
+  font-size:17px;
+  color:var(--ink);
+}
+.cert-org{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--slate-dark);
+}
+
+/* ===================================================================
+   SKILLS
+=================================================================== */
+.skills-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+}
+.skills-col h3{
+  color:var(--gold-300);
+  font-size:20px;
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--navy-700);
+}
+.skill-list{
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+.skill-list li{
+  color:#D6DAE6;
+  font-size:15px;
+  padding-left:18px;
+  position:relative;
+}
+.skill-list li::before{
+  content:"";
+  position:absolute; left:0; top:9px;
+  width:6px; height:1px;
+  background:var(--gold-500);
+}
+
+/* ===================================================================
+   ACTIVITIES
+=================================================================== */
+.activity-list{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.activity-list li{
+  font-size:16px;
+  line-height:1.6;
+  color:#2B3651;
+  padding-left:20px;
+  position:relative;
+}
+.activity-list li::before{
+  content:"";
+  position:absolute; left:0; top:10px;
+  width:7px; height:1px;
+  background:var(--gold-500);
+}
+.activity-list strong{color:var(--navy-900);}
+
+/* ===================================================================
+   FOOTER
+=================================================================== */
+.site-footer{
+  background:var(--navy-950);
+  color:#EDEFF4;
+  padding-top:64px;
+}
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  padding-bottom:40px;
+}
+.footer-name{
+  font-family:var(--serif);
+  font-size:24px;
+}
+.footer-line{
+  margin-top:6px;
+  color:var(--slate);
+  font-size:14px;
+}
+.footer-contact{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-family:var(--mono);
+  font-size:13px;
+  color:#B8C0D2;
+}
+.footer-contact a:hover{color:var(--gold-300);}
+.footer-copy{
+  text-align:center;
+  font-size:12px;
+  color:var(--slate-dark);
+  padding:18px 0;
+}
+
+/* ===================================================================
+   RESPONSIVE
+=================================================================== */
+@media (max-width:980px){
+  .project-grid{grid-template-columns:1fr 1fr;}
+  .sim-grid{grid-template-columns:1fr 1fr;}
+  .summary-stats{grid-template-columns:1fr 1fr;}
+}
+
+@media (max-width:860px){
+  .main-nav{
+    position:fixed;
+    top:calc(var(--header-h) + var(--ticker-h));
+    left:0; right:0;
+    background:var(--navy-950);
+    flex-direction:column;
+    gap:0;
+    padding:8px 28px 18px;
+    border-bottom:1px solid var(--navy-700);
+    transform:translateY(-8px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .main-nav.open{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .main-nav a{padding:12px 0; border-bottom:1px solid var(--navy-700);}
+  .nav-toggle{display:flex;}
+  .header-inner .btn{display:none;}
+
+  .hero-grid{grid-template-columns:1fr; gap:44px;}
+  .hero-chart{order:-1; max-width:320px;}
+}
+
+@media (max-width:640px){
+  .section{padding:64px 0;}
+  .container{padding:0 20px;}
+  .project-grid{grid-template-columns:1fr;}
+  .sim-grid{grid-template-columns:1fr 1fr;}
+  .summary-stats{grid-template-columns:1fr 1fr; gap:28px 20px;}
+  .skills-grid{grid-template-columns:1fr; gap:40px;}
+  .footer-grid{flex-direction:column; align-items:flex-start;}
+  .hero-name{font-size:44px;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="#top">SKS</a>
+    <nav class="main-nav" id="main-nav">
+      <a href="#summary" data-nav>Summary</a>
+      <a href="#experience" data-nav>Experience</a>
+      <a href="#projects" data-nav>Projects</a>
+      <a href="#simulations" data-nav>Simulations</a>
+      <a href="#certifications" data-nav>Certifications</a>
+      <a href="#skills" data-nav>Skills</a>
+      <a href="#activities" data-nav>Activities</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <a class="btn btn-gold btn-small" href="assets/Sushil_Singh_Resume.pdf" download>Download résumé</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker-track">
+    <!-- populated by JS, duplicated for seamless loop -->
+  </div>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker">Jamshedpur, India</p>
+      <h1 class="hero-name">Sushil Kumar<br>Singh</h1>
+      <p class="hero-line">BBA Finance graduate building a career in equity research, investment
+        banking, FP&amp;A and risk &amp; forensic consulting — grounded in SEBI‑compliant
+        operations and DCF modelling.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="assets/Sushil_Singh_Resume.pdf" download>Download résumé (PDF)</a>
+        <a class="btn btn-ghost" href="#projects">View projects</a>
+      </div>
+      <ul class="hero-contact">
+        <li><a href="mailto:sushilkrsingh7061@gmail.com">sushilkrsingh7061@gmail.com</a></li>
+        <li><a href="tel:+917061707350">+91 70617 07350</a></li>
+        <li><a href="https://linkedin.com/in/sushilkrsingh03" target="_blank" rel="noopener">linkedin.com/in/sushilkrsingh03</a></li>
+      </ul>
+    </div>
+    <div class="hero-chart" aria-hidden="true">
+      <svg viewBox="0 0 460 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="40" x2="40" y2="310" stroke="#223862" stroke-width="1"/>
+        <line x1="40" y1="310" x2="430" y2="310" stroke="#223862" stroke-width="1"/>
+        <line x1="40" y1="245" x2="430" y2="245" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
+        <line x1="40" y1="180" x2="430" y2="180" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
+        <line x1="40" y1="115" x2="430" y2="115" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
+        <polyline points="40,275 85,290 130,255 175,265 220,210 265,225 310,150 355,175 400,95 430,70"
+          stroke="#C7A252" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round" class="chart-line"/>
+        <polygon points="40,275 85,290 130,255 175,265 220,210 265,225 310,150 355,175 400,95 430,70 430,310 40,310"
+          fill="url(#chartFade)" opacity="0.5"/>
+        <defs>
+          <linearGradient id="chartFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#C7A252" stop-opacity="0.35"/>
+            <stop offset="1" stop-color="#C7A252" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="400" cy="95" r="4" fill="#E3C878"/>
+        <circle cx="430" cy="70" r="4" fill="#E3C878"/>
+        <text x="40" y="330" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="11">2022</text>
+        <text x="405" y="330" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="11">2026</text>
+        <text x="330" y="60" fill="#E3C878" font-family="IBM Plex Mono" font-size="12">CGPA 8.93</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY ============ -->
+<section class="section section-light" id="summary">
+  <div class="container narrow">
+    <p class="section-label">01 — Summary</p>
+    <p class="lede">Recent BBA Finance graduate (2026, 8.93 CGPA) with hands-on experience in
+      transaction processing, regulatory compliance and client service, built through a mutual
+      fund operations internship handling 100+ transactions with zero documentation errors.
+      Comfortable in financial modelling, advanced Excel and data-driven reporting, with a track
+      record of accuracy under SEBI/KYC standards. Looking to bring that operational discipline
+      to a research, banking or FP&amp;A seat.</p>
+    <div class="summary-stats">
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">MF transactions, zero errors</span></div>
+      <div class="stat"><span class="stat-num">150+</span><span class="stat-label">Clients counselled</span></div>
+      <div class="stat"><span class="stat-num">8.93</span><span class="stat-label">CGPA, BBA Finance</span></div>
+      <div class="stat"><span class="stat-num">Top 1%</span><span class="stat-label">NPTEL, IIT Madras</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section section-dark" id="experience">
+  <div class="container narrow">
+    <p class="section-label">02 — Experience</p>
+    <ol class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <p class="timeline-date">Jun 2025 – Jul 2025</p>
+          <h3>Finance Intern — Mutual Fund Operations &amp; Compliance</h3>
+          <p class="timeline-org">Sawa Financial Distribution Pvt. Ltd., Jamshedpur (on-site)</p>
+          <ul>
+            <li>Processed 100+ mutual fund transactions on the BSE STAR MF platform with zero documentation errors.</li>
+            <li>Managed end-to-end KYC initiation and post-transaction support under SEBI documentation norms.</li>
+            <li>Counselled 150+ clients on mutual fund options and NFOs, improving service outcomes through tailored guidance.</li>
+            <li>Maintained transaction records and data logs, streamlining reconciliation through structured Excel tracking.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <p class="timeline-date">Sep 2025 – Oct 2025</p>
+          <h3>Research Intern</h3>
+          <p class="timeline-org">ProCapitas (Nishtya Infotech Pvt. Ltd.), Remote</p>
+          <ul>
+            <li>Analysed financial statements and key performance metrics across 3+ companies as structured case studies.</li>
+            <li>Built DCF and post-merger impact models from scratch — revenue projections, WACC estimation, profit forecasting.</li>
+            <li>Conducted sector and market research as part of simulated deal-screening exercises, written up as analyst-style reports.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section section-light" id="projects">
+  <div class="container">
+    <p class="section-label">03 — Featured projects</p>
+    <div class="project-grid">
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3>Nestlé India — Equity Valuation &amp; Fundamental Analysis</h3>
+          <span class="tag">Equity Research</span>
+        </div>
+        <p>DCF valuation, ROIC–WACC spread analysis, and a Porter's Five Forces read on the FMCG
+          category, benchmarked against HUL, ITC and Britannia. Packaged as a 12-slide,
+          client-ready pitch deck.</p>
+        <button class="project-toggle" aria-expanded="false">View case study</button>
+        <div class="project-detail">
+          <ul>
+            <li>Intrinsic value derived via discounted cash flow, cross-checked against comparable-company multiples.</li>
+            <li>Peer comparison across HUL, ITC and Britannia on margin, ROIC and growth quality.</li>
+            <li>Porter's Five Forces framework applied to the Indian FMCG landscape to stress-test the moat.</li>
+            <li>Findings condensed into a 12-slide pitch deck aimed at a buy-side audience.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3>Varun Beverages — Financial Modelling &amp; Valuation</h3>
+          <span class="tag">FP&amp;A / Modelling</span>
+        </div>
+        <p>Three-statement operating model with FCFF/DCF and WACC–CAPM valuation, DuPont
+          decomposition, Altman Z-Score, and a Monte Carlo VaR simulation for downside risk.</p>
+        <button class="project-toggle" aria-expanded="false">Open model dashboard</button>
+        <div class="project-detail">
+          <div class="mini-dash">
+            <div class="mini-dash-chart">
+              <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <text x="0" y="12" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="9">FCFF PROJECTION (₹ CR, FY26–FY30)</text>
+                <g transform="translate(0,20)">
+                  <rect x="0"   y="70" width="34" height="40" fill="#223862"/>
+                  <rect x="52"  y="58" width="34" height="52" fill="#223862"/>
+                  <rect x="104" y="44" width="34" height="66" fill="#223862"/>
+                  <rect x="156" y="26" width="34" height="84" fill="#C7A252"/>
+                  <rect x="208" y="10" width="34" height="100" fill="#C7A252"/>
+                  <text x="10" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY26</text>
+                  <text x="62" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY27</text>
+                  <text x="112" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY28</text>
+                  <text x="164" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY29</text>
+                  <text x="216" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY30</text>
+                </g>
+              </svg>
+            </div>
+            <dl class="mini-dash-metrics">
+              <div><dt>WACC</dt><dd>11.2%</dd></div>
+              <div><dt>Altman Z-Score</dt><dd>3.4 · Safe zone</dd></div>
+              <div><dt>DuPont ROE</dt><dd>18.6%</dd></div>
+              <div><dt>1-Year VaR (95%)</dt><dd>−12.8%</dd></div>
+            </dl>
+          </div>
+          <ul>
+            <li>Three-statement model linking income statement, balance sheet and cash flow with circularity checks.</li>
+            <li>FCFF/DCF valuation cross-referenced with a CAPM-derived cost of equity.</li>
+            <li>DuPont decomposition and Altman Z-Score to sanity-check profitability and solvency.</li>
+            <li>Monte Carlo simulation (10,000 trials) to estimate Value-at-Risk on the equity position.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-head">
+          <h3>SEBI Enforcement Review — Rajesh Exports</h3>
+          <span class="tag">Risk &amp; Forensic</span>
+        </div>
+        <p>A red-flag analysis of a real SEBI enforcement action, structured as a short written
+          case study rather than a social post — what the filings showed, and where the process
+          controls should have caught it earlier.</p>
+        <button class="project-toggle" aria-expanded="false">Read case study</button>
+        <div class="project-detail">
+          <ul>
+            <li>Reconstructed the enforcement timeline from SEBI orders and public filings.</li>
+            <li>Mapped disclosure and governance red flags against standard forensic checklists.</li>
+            <li>Proposed compliance controls that would have surfaced the issue earlier.</li>
+            <li>Written as a structured case memo: background, red flags, regulatory response, lessons.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOB SIMULATIONS ============ -->
+<section class="section section-dark" id="simulations">
+  <div class="container narrow">
+    <p class="section-label">04 — Job simulations</p>
+    <div class="sim-grid">
+      <div class="sim-card">
+        <span class="sim-mark">GS</span>
+        <h4>Operations</h4>
+        <p>Goldman Sachs · Forage</p>
+        <p class="sim-desc">Resolved trade settlement and asset transfer issues for HNW clients across Trading, Compliance and IT.</p>
+      </div>
+      <div class="sim-card">
+        <span class="sim-mark">WF</span>
+        <h4>Commercial Banking</h4>
+        <p>Wells Fargo · Forage</p>
+        <p class="sim-desc">Analysed client financials and industry data into a growth-focused product proposal.</p>
+      </div>
+      <div class="sim-card">
+        <span class="sim-mark">SC</span>
+        <h4>Banking &amp; Coverage</h4>
+        <p>Standard Chartered · Forage</p>
+        <p class="sim-desc">Worked a corporate coverage brief — client due diligence and a credit-facing recommendation.</p>
+      </div>
+      <div class="sim-card">
+        <span class="sim-mark">BofA</span>
+        <h4>Investment Banking</h4>
+        <p>Bank of America · Forage</p>
+        <p class="sim-desc">Built a sell-side style pitch exercise, from company screen to a summary recommendation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section class="section section-light" id="certifications">
+  <div class="container narrow">
+    <p class="section-label">05 — Certifications &amp; courses</p>
+    <ul class="cert-list">
+      <li>
+        <a href="https://corporatefinanceinstitute.com" target="_blank" rel="noopener">
+          <span class="cert-name">Financial Analysis &amp; Modelling Certification</span>
+          <span class="cert-org">Corporate Finance Institute (CFI) · Apr 2025</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://online.wharton.upenn.edu" target="_blank" rel="noopener">
+          <span class="cert-name">Introduction to Corporate Finance</span>
+          <span class="cert-org">Wharton Online, University of Pennsylvania · Oct 2025</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-forward-program" target="_blank" rel="noopener">
+          <span class="cert-name">McKinsey Forward Program</span>
+          <span class="cert-org">McKinsey &amp; Company · Dec 2025</span>
+        </a>
+      </li>
+      <li>
+        <span class="cert-static">
+          <span class="cert-name">Diploma in Computer Applications (DCA)</span>
+          <span class="cert-org">Jamshedpur · Apr 2025</span>
+        </span>
+      </li>
+      <li>
+        <a href="https://www.niitfoundation.org" target="_blank" rel="noopener">
+          <span class="cert-name">Digital Productivity Certification</span>
+          <span class="cert-org">NIIT Foundation × UNICEF · Sep 2024</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section section-dark" id="skills">
+  <div class="container">
+    <p class="section-label">06 — Skills</p>
+    <div class="skills-grid">
+      <div class="skills-col">
+        <h3>Technical</h3>
+        <ul class="skill-list">
+          <li>Advanced Excel — VLOOKUP, pivot tables, scenario analysis</li>
+          <li>Financial modelling — DCF, comparable company analysis</li>
+          <li>Regulatory &amp; compliance documentation — SEBI / KYC</li>
+          <li>Power BI fundamentals</li>
+          <li>Financial accounting</li>
+          <li>MS Office &amp; data reporting</li>
+        </ul>
+      </div>
+      <div class="skills-col">
+        <h3>Soft skills</h3>
+        <ul class="skill-list">
+          <li>Client service &amp; query resolution</li>
+          <li>Attention to detail &amp; accuracy</li>
+          <li>Team collaboration</li>
+          <li>Organised in fast-paced environments</li>
+          <li>Self-motivated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACTIVITIES ============ -->
+<section class="section section-light" id="activities">
+  <div class="container narrow">
+    <p class="section-label">07 — Activities</p>
+    <ul class="activity-list">
+      <li><strong>Top 1% performer</strong> — Research Methodology and Business Ethics, NPTEL (IIT Madras).</li>
+      <li><strong>Rotaract Club member</strong>, Arka Jain University — engaged in social &amp; community programs.</li>
+      <li><strong>100-day LinkedIn challenge</strong> — daily write-ups on the Indian Banking Sector.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER / CONTACT ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-name">Sushil Kumar Singh</p>
+      <p class="footer-line">Jamshedpur, India · Open to relocation</p>
+    </div>
+    <ul class="footer-contact">
+      <li><a href="mailto:sushilkrsingh7061@gmail.com">sushilkrsingh7061@gmail.com</a></li>
+      <li><a href="tel:+917061707350">+91 70617 07350</a></li>
+      <li><a href="https://linkedin.com/in/sushilkrsingh03" target="_blank" rel="noopener">linkedin.com/in/sushilkrsingh03</a></li>
+    </ul>
+    <a class="btn btn-gold btn-small" href="assets/Sushil_Singh_Resume.pdf" download>Download résumé</a>
+  </div>
+  <div class="ticker ticker-footer" aria-hidden="true">
+    <div class="ticker-track" id="ticker-track-footer"></div>
+  </div>
+  <p class="footer-copy">© 2026 Sushil Kumar Singh.</p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Ticker content (purely decorative) ---------- */
+  var tickerData = [
+    {name:"SENSEX", value:"82,451.20", change:"+0.42%", dir:"up"},
+    {name:"NIFTY 50", value:"25,188.65", change:"+0.38%", dir:"up"},
+    {name:"CGPA", value:"8.93", change:"BBA FINANCE '26", dir:"flat"},
+    {name:"BANK NIFTY", value:"55,902.10", change:"-0.15%", dir:"down"},
+    {name:"MF TXNS", value:"100+", change:"ZERO ERRORS", dir:"flat"},
+    {name:"USD/INR", value:"83.12", change:"+0.06%", dir:"up"},
+    {name:"CLIENTS COUNSELLED", value:"150+", change:"MF & NFO", dir:"flat"},
+    {name:"NPTEL RANK", value:"TOP 1%", change:"IIT MADRAS", dir:"up"},
+    {name:"10Y G-SEC", value:"6.98%", change:"-2bps", dir:"down"}
+  ];
+
+  function buildTicker(el){
+    if(!el) return;
+    var html = "";
+    tickerData.forEach(function(item){
+      var dirClass = item.dir === "up" ? "up" : (item.dir === "down" ? "down" : "");
+      var arrow = item.dir === "up" ? "▲" : (item.dir === "down" ? "▼" : "•");
+      html += '<span class="ticker-item ' + dirClass + '">' +
+                '<span class="tk-name">' + item.name + '</span>' +
+                '<span>' + item.value + '</span>' +
+                '<span>' + arrow + ' ' + item.change + '</span>' +
+              '</span>';
+    });
+    // duplicate content once for a seamless CSS-driven loop
+    el.innerHTML = html + html;
+  }
+
+  buildTicker(document.getElementById("ticker-track"));
+  buildTicker(document.getElementById("ticker-track-footer"));
+
+  /* ---------- Mobile nav toggle ---------- */
+  var navToggle = document.getElementById("nav-toggle");
+  var mainNav = document.getElementById("main-nav");
+  if(navToggle && mainNav){
+    navToggle.addEventListener("click", function(){
+      var isOpen = mainNav.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+    mainNav.querySelectorAll("a").forEach(function(link){
+      link.addEventListener("click", function(){
+        mainNav.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  /* ---------- Active section highlight in nav ---------- */
+  var navLinks = document.querySelectorAll("[data-nav]");
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
+  if("IntersectionObserver" in window && sections.length){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var id = entry.target.getAttribute("id");
+          navLinks.forEach(function(link){
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    }, {rootMargin: "-45% 0px -50% 0px", threshold: 0});
+    sections.forEach(function(s){ observer.observe(s); });
+  }
+
+  /* ---------- Project card accordions ---------- */
+  document.querySelectorAll(".project-toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var card = btn.closest(".project-card");
+      var isOpen = card.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      btn.textContent = isOpen ? "Close" : btn.dataset.label;
+    });
+    btn.dataset.label = btn.textContent;
+  });
+
+})();
+
+</script>
+</body>
+</html>
