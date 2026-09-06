@@ -1056,11 +1056,15 @@ img,svg{max-width:100%; display:block;}
     var proxy = "https://api.allorigins.win/raw?url=";
     var target = encodeURIComponent("https://query1.finance.yahoo.com/v8/finance/chart/" + symbol);
     return fetch(proxy + target)
-      .then(function(res){ return res.json(); })
+      .then(function(res){
+        if(!res.ok) throw new Error("bad status");
+        return res.json();
+      })
       .then(function(data){
         var result = data.chart.result[0].meta;
         var price = result.regularMarketPrice;
         var prevClose = result.previousClose || result.chartPreviousClose;
+        if(price == null || prevClose == null) throw new Error("missing price data");
         var pctChange = ((price - prevClose) / prevClose) * 100;
         return {
           value: price.toLocaleString("en-IN", {maximumFractionDigits:2}),
@@ -1071,22 +1075,38 @@ img,svg{max-width:100%; display:block;}
       .catch(function(){ return null; });
   }
 
+  function fetchWithRetry(symbol, attempts){
+    return fetchLiveQuote(symbol).then(function(res){
+      if(res || attempts <= 1) return res;
+      return new Promise(function(resolve){
+        setTimeout(function(){ resolve(fetchWithRetry(symbol, attempts - 1)); }, 700);
+      });
+    });
+  }
+
   function loadLiveTickerData(){
     var liveItems = tickerData.filter(function(item){ return item.live; });
-    var promises = liveItems.map(function(item){ return fetchLiveQuote(item.symbol); });
-    Promise.all(promises).then(function(results){
-      results.forEach(function(res, i){
+    var i = 0;
+    function next(){
+      if(i >= liveItems.length){
+        buildTicker(document.getElementById("ticker-track"));
+        buildTicker(document.getElementById("ticker-track-footer"));
+        return;
+      }
+      var item = liveItems[i];
+      fetchWithRetry(item.symbol, 2).then(function(res){
         if(res){
-          liveItems[i].value = res.value;
-          liveItems[i].change = res.change;
-          liveItems[i].dir = res.dir;
+          item.value = res.value;
+          item.change = res.change;
+          item.dir = res.dir;
         } else {
-          liveItems[i].change = "n/a";
+          item.change = "n/a";
         }
+        i++;
+        setTimeout(next, 350);
       });
-      buildTicker(document.getElementById("ticker-track"));
-      buildTicker(document.getElementById("ticker-track-footer"));
-    });
+    }
+    next();
   }
 
   function buildTicker(el){
