@@ -1042,16 +1042,52 @@ img,svg{max-width:100%; display:block;}
   "use strict";
 
   var tickerData = [
-    {name:"SENSEX", value:"82,451.20", change:"+0.42%", dir:"up"},
-    {name:"NIFTY 50", value:"25,188.65", change:"+0.38%", dir:"up"},
+    {name:"SENSEX", value:"—", change:"loading…", dir:"flat", symbol:"^BSESN", live:true},
+    {name:"NIFTY 50", value:"—", change:"loading…", dir:"flat", symbol:"^NSEI", live:true},
     {name:"CGPA", value:"8.93", change:"BBA FINANCE '26", dir:"flat"},
-    {name:"BANK NIFTY", value:"55,902.10", change:"-0.15%", dir:"down"},
+    {name:"BANK NIFTY", value:"—", change:"loading…", dir:"flat", symbol:"^NSEBANK", live:true},
     {name:"MF TXNS", value:"100+", change:"ZERO ERRORS", dir:"flat"},
-    {name:"USD/INR", value:"83.12", change:"+0.06%", dir:"up"},
+    {name:"USD/INR", value:"—", change:"loading…", dir:"flat", symbol:"INR=X", live:true},
     {name:"CLIENTS COUNSELLED", value:"150+", change:"MF & NFO", dir:"flat"},
-    {name:"NPTEL RANK", value:"TOP 1%", change:"IIT MADRAS", dir:"up"},
-    {name:"10Y G-SEC", value:"6.98%", change:"-2bps", dir:"down"}
+    {name:"NPTEL RANK", value:"TOP 1%", change:"IIT MADRAS", dir:"up"}
   ];
+
+  function fetchLiveQuote(symbol){
+    var proxy = "https://api.allorigins.win/raw?url=";
+    var target = encodeURIComponent("https://query1.finance.yahoo.com/v8/finance/chart/" + symbol);
+    return fetch(proxy + target)
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        var result = data.chart.result[0].meta;
+        var price = result.regularMarketPrice;
+        var prevClose = result.previousClose || result.chartPreviousClose;
+        var pctChange = ((price - prevClose) / prevClose) * 100;
+        return {
+          value: price.toLocaleString("en-IN", {maximumFractionDigits:2}),
+          change: (pctChange >= 0 ? "+" : "") + pctChange.toFixed(2) + "%",
+          dir: pctChange > 0 ? "up" : (pctChange < 0 ? "down" : "flat")
+        };
+      })
+      .catch(function(){ return null; });
+  }
+
+  function loadLiveTickerData(){
+    var liveItems = tickerData.filter(function(item){ return item.live; });
+    var promises = liveItems.map(function(item){ return fetchLiveQuote(item.symbol); });
+    Promise.all(promises).then(function(results){
+      results.forEach(function(res, i){
+        if(res){
+          liveItems[i].value = res.value;
+          liveItems[i].change = res.change;
+          liveItems[i].dir = res.dir;
+        } else {
+          liveItems[i].change = "n/a";
+        }
+      });
+      buildTicker(document.getElementById("ticker-track"));
+      buildTicker(document.getElementById("ticker-track-footer"));
+    });
+  }
 
   function buildTicker(el){
     if(!el) return;
@@ -1070,6 +1106,8 @@ img,svg{max-width:100%; display:block;}
 
   buildTicker(document.getElementById("ticker-track"));
   buildTicker(document.getElementById("ticker-track-footer"));
+  loadLiveTickerData();
+  setInterval(loadLiveTickerData, 60000);
 
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
