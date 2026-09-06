@@ -469,9 +469,24 @@ img,svg{max-width:100%; display:block;}
 
 .sim-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
   gap:18px;
 }
+.sim-verify-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:14px;
+  padding:8px 16px;
+  background:transparent;
+  border:1px solid var(--gold-500);
+  color:var(--gold-300);
+  font-weight:600;
+  font-size:12.5px;
+  border-radius:2px;
+  transition:background-color .18s ease, color .18s ease;
+}
+.sim-verify-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 .sim-card{
   border:1px solid var(--navy-700);
   padding:22px 18px;
@@ -635,7 +650,6 @@ img,svg{max-width:100%; display:block;}
 }
 
 @media (max-width:980px){
-  .sim-grid{grid-template-columns:1fr 1fr;}
   .summary-stats{grid-template-columns:1fr 1fr;}
 }
 
@@ -672,7 +686,6 @@ img,svg{max-width:100%; display:block;}
   .section{padding:64px 0;}
   .container{padding:0 20px;}
   .project-grid{grid-template-columns:1fr;}
-  .sim-grid{grid-template-columns:1fr 1fr;}
   .summary-stats{grid-template-columns:1fr 1fr; gap:28px 20px;}
   .skills-grid{grid-template-columns:1fr; gap:40px;}
   .footer-grid{flex-direction:column; align-items:flex-start;}
@@ -900,24 +913,35 @@ img,svg{max-width:100%; display:block;}
         <h4>Operations</h4>
         <p>Goldman Sachs · Forage</p>
         <p class="sim-desc">Resolved trade settlement and asset transfer issues for HNW clients across Trading, Compliance and IT.</p>
+        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/MBA4MnZTNFEoJZGnk/wNge9cjzNTXD2acrv_MBA4MnZTNFEoJZGnk_GZzhaKNWEFospqxee_1786181455357_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
+      </div>
+      <div class="sim-card">
+        <span class="sim-mark">EY</span>
+        <h4>Forensic &amp; Integrity Services</h4>
+        <p>EY · Forage</p>
+        <p class="sim-desc">Understanding fraud investigation and the fraud triangle; deconstructed whistleblower complaints; analysed financial information related to suspected fraud; cross-border collaboration with international EY Forensic &amp; Integrity Services teams.</p>
+        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/Z3pPDqCPapFTSGBgi/G4Kp6b2rhsyavQdaa_Z3pPDqCPapFTSGBgi_GZzhaKNWEFospqxee_1788688919134_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
       </div>
       <div class="sim-card">
         <span class="sim-mark">WF</span>
         <h4>Commercial Banking</h4>
         <p>Wells Fargo · Forage</p>
         <p class="sim-desc">Analysed client financials and industry data into a growth-focused product proposal.</p>
+        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/nkmk7gJitYs4TBvoA/AQKJ8jdotFCzz5WmM_nkmk7gJitYs4TBvoA_GZzhaKNWEFospqxee_1786989298699_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
       </div>
       <div class="sim-card">
         <span class="sim-mark">SC</span>
         <h4>Banking &amp; Coverage</h4>
         <p>Standard Chartered · Forage</p>
         <p class="sim-desc">Worked a corporate coverage brief — client due diligence and a credit-facing recommendation.</p>
+        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/ZsgybEFo5RxyHxwXL/TwxTEuyPugfgMGm8H_ZsgybEFo5RxyHxwXL_GZzhaKNWEFospqxee_1786383327488_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
       </div>
       <div class="sim-card">
         <span class="sim-mark">BofA</span>
         <h4>Investment Banking</h4>
         <p>Bank of America · Forage</p>
         <p class="sim-desc">Built a sell-side style pitch exercise, from company screen to a summary recommendation.</p>
+        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/fMCqmt8qR4G85Puue/Hi8MJQE5T3MeTRWQR_fMCqmt8qR4G85Puue_GZzhaKNWEFospqxee_1759155114638_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
       </div>
     </div>
   </div>
@@ -1042,72 +1066,16 @@ img,svg{max-width:100%; display:block;}
   "use strict";
 
   var tickerData = [
-    {name:"SENSEX", value:"—", change:"loading…", dir:"flat", symbol:"^BSESN", live:true},
-    {name:"NIFTY 50", value:"—", change:"loading…", dir:"flat", symbol:"^NSEI", live:true},
+    {name:"SENSEX", value:"82,451.20", change:"+0.42%", dir:"up"},
+    {name:"NIFTY 50", value:"25,188.65", change:"+0.38%", dir:"up"},
     {name:"CGPA", value:"8.93", change:"BBA FINANCE '26", dir:"flat"},
-    {name:"BANK NIFTY", value:"—", change:"loading…", dir:"flat", symbol:"^NSEBANK", live:true},
+    {name:"BANK NIFTY", value:"55,902.10", change:"-0.15%", dir:"down"},
     {name:"MF TXNS", value:"100+", change:"ZERO ERRORS", dir:"flat"},
-    {name:"USD/INR", value:"—", change:"loading…", dir:"flat", symbol:"INR=X", live:true},
+    {name:"USD/INR", value:"83.12", change:"+0.06%", dir:"up"},
     {name:"CLIENTS COUNSELLED", value:"150+", change:"MF & NFO", dir:"flat"},
-    {name:"NPTEL RANK", value:"TOP 1%", change:"IIT MADRAS", dir:"up"}
+    {name:"NPTEL RANK", value:"TOP 1%", change:"IIT MADRAS", dir:"up"},
+    {name:"10Y G-SEC", value:"6.98%", change:"-2bps", dir:"down"}
   ];
-
-  function fetchLiveQuote(symbol){
-    var proxy = "https://api.allorigins.win/raw?url=";
-    var target = encodeURIComponent("https://query1.finance.yahoo.com/v8/finance/chart/" + symbol);
-    return fetch(proxy + target)
-      .then(function(res){
-        if(!res.ok) throw new Error("bad status");
-        return res.json();
-      })
-      .then(function(data){
-        var result = data.chart.result[0].meta;
-        var price = result.regularMarketPrice;
-        var prevClose = result.previousClose || result.chartPreviousClose;
-        if(price == null || prevClose == null) throw new Error("missing price data");
-        var pctChange = ((price - prevClose) / prevClose) * 100;
-        return {
-          value: price.toLocaleString("en-IN", {maximumFractionDigits:2}),
-          change: (pctChange >= 0 ? "+" : "") + pctChange.toFixed(2) + "%",
-          dir: pctChange > 0 ? "up" : (pctChange < 0 ? "down" : "flat")
-        };
-      })
-      .catch(function(){ return null; });
-  }
-
-  function fetchWithRetry(symbol, attempts){
-    return fetchLiveQuote(symbol).then(function(res){
-      if(res || attempts <= 1) return res;
-      return new Promise(function(resolve){
-        setTimeout(function(){ resolve(fetchWithRetry(symbol, attempts - 1)); }, 700);
-      });
-    });
-  }
-
-  function loadLiveTickerData(){
-    var liveItems = tickerData.filter(function(item){ return item.live; });
-    var i = 0;
-    function next(){
-      if(i >= liveItems.length){
-        buildTicker(document.getElementById("ticker-track"));
-        buildTicker(document.getElementById("ticker-track-footer"));
-        return;
-      }
-      var item = liveItems[i];
-      fetchWithRetry(item.symbol, 2).then(function(res){
-        if(res){
-          item.value = res.value;
-          item.change = res.change;
-          item.dir = res.dir;
-        } else {
-          item.change = "n/a";
-        }
-        i++;
-        setTimeout(next, 350);
-      });
-    }
-    next();
-  }
 
   function buildTicker(el){
     if(!el) return;
@@ -1126,8 +1094,6 @@ img,svg{max-width:100%; display:block;}
 
   buildTicker(document.getElementById("ticker-track"));
   buildTicker(document.getElementById("ticker-track-footer"));
-  loadLiveTickerData();
-  setInterval(loadLiveTickerData, 60000);
 
   var navToggle = document.getElementById("nav-toggle");
   var mainNav = document.getElementById("main-nav");
