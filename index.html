@@ -229,6 +229,20 @@ img,svg{max-width:100%; display:block;}
   gap:56px;
   align-items:center;
 }
+.hero-top-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:32px;
+}
+.profile-photo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--gold-500);
+  flex-shrink:0;
+}
 .hero-kicker{
   font-family:var(--mono);
   font-size:13px;
@@ -663,6 +677,7 @@ img,svg{max-width:100%; display:block;}
 
   .hero-grid{grid-template-columns:1fr; gap:44px;}
   .hero-chart{order:-1; max-width:320px;}
+  .profile-photo{width:96px; height:96px;}
 }
 
 @media (max-width:640px){
@@ -674,6 +689,7 @@ img,svg{max-width:100%; display:block;}
   .skills-grid{grid-template-columns:1fr; gap:40px;}
   .footer-grid{flex-direction:column; align-items:flex-start;}
   .hero-name{font-size:44px;}
+  .hero-top-row{flex-direction:column-reverse; align-items:flex-start; gap:20px;}
 }
 
 </style>
@@ -714,8 +730,13 @@ img,svg{max-width:100%; display:block;}
 <section class="hero" id="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="hero-kicker">Jamshedpur, India</p>
-      <h1 class="hero-name">Sushil Kumar<br>Singh</h1>
+      <div class="hero-top-row">
+        <div>
+          <p class="hero-kicker">Jamshedpur, India</p>
+          <h1 class="hero-name">Sushil Kumar<br>Singh</h1>
+        </div>
+        <img src="assets/profile.jpg" alt="Sushil Kumar Singh" class="profile-photo">
+      </div>
       <p class="hero-line">BBA Finance graduate building a career in equity research, investment
         banking, FP&amp;A and risk &amp; forensic consulting — grounded in SEBI‑compliant
         operations and DCF modelling.</p>
