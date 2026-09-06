@@ -379,7 +379,7 @@ img,svg{max-width:100%; display:block;}
 =================================================================== */
 .project-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:24px;
 }
 .project-card{
@@ -544,6 +544,19 @@ img,svg{max-width:100%; display:block;}
   font-size:12.5px;
   color:var(--slate-dark);
 }
+.cert-name-wrap{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.cert-thumb{
+  width:36px;
+  height:36px;
+  object-fit:cover;
+  border-radius:4px;
+  border:1px solid var(--paper-2);
+  flex-shrink:0;
+}
 
 /* ===================================================================
    SKILLS
@@ -646,7 +659,6 @@ img,svg{max-width:100%; display:block;}
    RESPONSIVE
 =================================================================== */
 @media (max-width:980px){
-  .project-grid{grid-template-columns:1fr 1fr;}
   .sim-grid{grid-template-columns:1fr 1fr;}
   .summary-stats{grid-template-columns:1fr 1fr;}
 }
@@ -900,25 +912,6 @@ img,svg{max-width:100%; display:block;}
         </div>
       </article>
 
-      <article class="project-card">
-        <div class="project-head">
-          <h3>SEBI Enforcement Review — Rajesh Exports</h3>
-          <span class="tag">Risk &amp; Forensic</span>
-        </div>
-        <p>A red-flag analysis of a real SEBI enforcement action, structured as a short written
-          case study rather than a social post — what the filings showed, and where the process
-          controls should have caught it earlier.</p>
-        <button class="project-toggle" aria-expanded="false">Read case study</button>
-        <div class="project-detail">
-          <ul>
-            <li>Reconstructed the enforcement timeline from SEBI orders and public filings.</li>
-            <li>Mapped disclosure and governance red flags against standard forensic checklists.</li>
-            <li>Proposed compliance controls that would have surfaced the issue earlier.</li>
-            <li>Written as a structured case memo: background, red flags, regulatory response, lessons.</li>
-          </ul>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
@@ -962,32 +955,47 @@ img,svg{max-width:100%; display:block;}
     <p class="section-label">05 — Certifications &amp; courses</p>
     <ul class="cert-list">
       <li>
-        <a href="https://corporatefinanceinstitute.com" target="_blank" rel="noopener">
-          <span class="cert-name">Financial Analysis &amp; Modelling Certification</span>
+        <a href="assets/certs/cfi.jpg" target="_blank" rel="noopener">
+          <span class="cert-name-wrap">
+            <span class="cert-name">Financial Analysis &amp; Modelling Certification</span>
+            <img class="cert-thumb" src="assets/certs/cfi.jpg" alt="">
+          </span>
           <span class="cert-org">Corporate Finance Institute (CFI) · Apr 2025</span>
         </a>
       </li>
       <li>
-        <a href="https://online.wharton.upenn.edu" target="_blank" rel="noopener">
-          <span class="cert-name">Introduction to Corporate Finance</span>
+        <a href="assets/certs/wharton.jpg" target="_blank" rel="noopener">
+          <span class="cert-name-wrap">
+            <span class="cert-name">Introduction to Corporate Finance</span>
+            <img class="cert-thumb" src="assets/certs/wharton.jpg" alt="">
+          </span>
           <span class="cert-org">Wharton Online, University of Pennsylvania · Oct 2025</span>
         </a>
       </li>
       <li>
-        <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-forward-program" target="_blank" rel="noopener">
-          <span class="cert-name">McKinsey Forward Program</span>
+        <a href="assets/certs/mckinsey.jpg" target="_blank" rel="noopener">
+          <span class="cert-name-wrap">
+            <span class="cert-name">McKinsey Forward Program</span>
+            <img class="cert-thumb" src="assets/certs/mckinsey.jpg" alt="">
+          </span>
           <span class="cert-org">McKinsey &amp; Company · Dec 2025</span>
         </a>
       </li>
       <li>
-        <span class="cert-static">
-          <span class="cert-name">Diploma in Computer Applications (DCA)</span>
+        <a href="assets/certs/dca.jpg" target="_blank" rel="noopener">
+          <span class="cert-name-wrap">
+            <span class="cert-name">Diploma in Computer Applications (DCA)</span>
+            <img class="cert-thumb" src="assets/certs/dca.jpg" alt="">
+          </span>
           <span class="cert-org">Jamshedpur · Apr 2025</span>
-        </span>
+        </a>
       </li>
       <li>
-        <a href="https://www.niitfoundation.org" target="_blank" rel="noopener">
-          <span class="cert-name">Digital Productivity Certification</span>
+        <a href="assets/certs/niit.jpg" target="_blank" rel="noopener">
+          <span class="cert-name-wrap">
+            <span class="cert-name">Digital Productivity Certification</span>
+            <img class="cert-thumb" src="assets/certs/niit.jpg" alt="">
+          </span>
           <span class="cert-org">NIIT Foundation × UNICEF · Sep 2024</span>
         </a>
       </li>
