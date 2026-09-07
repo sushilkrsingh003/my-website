@@ -467,59 +467,112 @@ img,svg{max-width:100%; display:block;}
 }
 .project-link-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 
-.sim-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-  gap:18px;
+/* ===== Job simulations — single-row scroll, Forage-style photo cards ===== */
+.sim-scroll{
+  overflow-x:auto;
+  overflow-y:hidden;
+  margin:0 -4px;
+  padding:4px 4px 16px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--navy-700) transparent;
 }
-.sim-verify-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:14px;
-  padding:8px 16px;
-  background:transparent;
-  border:1px solid var(--gold-500);
-  color:var(--gold-300);
-  font-weight:600;
-  font-size:12.5px;
-  border-radius:2px;
-  transition:background-color .18s ease, color .18s ease;
+.sim-scroll::-webkit-scrollbar{height:6px;}
+.sim-scroll::-webkit-scrollbar-track{background:transparent;}
+.sim-scroll::-webkit-scrollbar-thumb{background:var(--navy-700); border-radius:4px;}
+
+.sim-row{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:16px;
+  width:max-content;
 }
-.sim-verify-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 .sim-card{
+  flex:0 0 288px;
+  display:flex;
+  gap:12px;
   border:1px solid var(--navy-700);
-  padding:22px 18px;
-  text-align:left;
+  background:var(--navy-800);
+  padding:12px;
 }
-.sim-mark{
-  display:inline-flex;
+.sim-photo{
+  width:84px;
+  flex-shrink:0;
+  border-radius:2px;
+  background-size:cover;
+  background-position:center;
+  background-color:var(--navy-700);
+}
+.sim-content{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0;
+  flex:1;
+}
+.sim-top-row{
+  display:flex;
   align-items:center;
-  justify-content:center;
-  min-width:44px; height:32px;
-  padding:0 8px;
+  justify-content:space-between;
+  gap:8px;
+}
+.sim-logo-tag{
   font-family:var(--mono);
-  font-size:13px;
+  font-size:10.5px;
   font-weight:600;
   color:var(--navy-950);
   background:var(--gold-500);
-  margin-bottom:16px;
+  padding:2px 6px;
+  line-height:1.4;
+  white-space:nowrap;
+}
+.sim-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  font-family:var(--mono);
+  font-size:9.5px;
+  color:#7FC69B;
+  border:1px solid rgba(127,198,155,0.4);
+  padding:2px 6px;
+  border-radius:20px;
+  white-space:nowrap;
 }
 .sim-card h4{
   color:#fff;
-  font-size:17px;
-  margin-bottom:6px;
+  font-size:14.5px;
+  line-height:1.25;
 }
-.sim-card p{
-  font-size:13px;
+.sim-org{
+  font-family:var(--mono);
+  font-size:11px;
   color:var(--gold-300);
-  margin-bottom:10px;
 }
 .sim-desc{
   font-family:var(--sans);
-  color:#B8C0D2 !important;
-  font-size:13.5px;
-  line-height:1.55;
+  color:#B8C0D2;
+  font-size:11.5px;
+  line-height:1.45;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.sim-verify-btn{
+  margin-top:auto;
+  align-self:flex-start;
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:11.5px;
+  color:var(--gold-300);
+  border-bottom:1px solid var(--gold-500);
+  padding-bottom:1px;
+}
+.sim-verify-btn:hover{color:var(--gold-500);}
+.sim-hint{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--slate);
+  margin-top:14px;
 }
 
 .cert-list{
@@ -691,6 +744,8 @@ img,svg{max-width:100%; display:block;}
   .footer-grid{flex-direction:column; align-items:flex-start;}
   .hero-name{font-size:44px;}
   .hero-top-row{flex-direction:column-reverse; align-items:flex-start; gap:20px;}
+  .sim-card{flex-basis:250px;}
+  .sim-photo{width:70px;}
 }
 
 </style>
@@ -907,43 +962,110 @@ img,svg{max-width:100%; display:block;}
 <section class="section section-dark" id="simulations">
   <div class="container narrow">
     <p class="section-label">04 — Job simulations</p>
-    <div class="sim-grid">
-      <div class="sim-card">
-        <span class="sim-mark">GS</span>
-        <h4>Operations</h4>
-        <p>Goldman Sachs · Forage</p>
-        <p class="sim-desc">Resolved trade settlement and asset transfer issues for HNW clients across Trading, Compliance and IT.</p>
-        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/MBA4MnZTNFEoJZGnk/wNge9cjzNTXD2acrv_MBA4MnZTNFEoJZGnk_GZzhaKNWEFospqxee_1786181455357_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
-      </div>
-      <div class="sim-card">
-        <span class="sim-mark">EY</span>
-        <h4>Forensic &amp; Integrity Services</h4>
-        <p>EY · Forage</p>
-        <p class="sim-desc">Understanding fraud investigation and the fraud triangle; deconstructed whistleblower complaints; analysed financial information related to suspected fraud; cross-border collaboration with international EY Forensic &amp; Integrity Services teams.</p>
-        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/Z3pPDqCPapFTSGBgi/G4Kp6b2rhsyavQdaa_Z3pPDqCPapFTSGBgi_GZzhaKNWEFospqxee_1788688919134_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
-      </div>
-      <div class="sim-card">
-        <span class="sim-mark">WF</span>
-        <h4>Commercial Banking</h4>
-        <p>Wells Fargo · Forage</p>
-        <p class="sim-desc">Analysed client financials and industry data into a growth-focused product proposal.</p>
-        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/nkmk7gJitYs4TBvoA/AQKJ8jdotFCzz5WmM_nkmk7gJitYs4TBvoA_GZzhaKNWEFospqxee_1786989298699_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
-      </div>
-      <div class="sim-card">
-        <span class="sim-mark">SC</span>
-        <h4>Banking &amp; Coverage</h4>
-        <p>Standard Chartered · Forage</p>
-        <p class="sim-desc">Worked a corporate coverage brief — client due diligence and a credit-facing recommendation.</p>
-        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/ZsgybEFo5RxyHxwXL/TwxTEuyPugfgMGm8H_ZsgybEFo5RxyHxwXL_GZzhaKNWEFospqxee_1786383327488_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
-      </div>
-      <div class="sim-card">
-        <span class="sim-mark">BofA</span>
-        <h4>Investment Banking</h4>
-        <p>Bank of America · Forage</p>
-        <p class="sim-desc">Built a sell-side style pitch exercise, from company screen to a summary recommendation.</p>
-        <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/fMCqmt8qR4G85Puue/Hi8MJQE5T3MeTRWQR_fMCqmt8qR4G85Puue_GZzhaKNWEFospqxee_1759155114638_completion_certificate.pdf" target="_blank" rel="noopener">Verify</a>
+    <div class="sim-scroll">
+      <div class="sim-row">
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">GS</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Operations</h4>
+            <p class="sim-org">Goldman Sachs · Forage</p>
+            <p class="sim-desc">Resolved trade settlement and asset transfer issues for HNW clients.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/MBA4MnZTNFEoJZGnk/wNge9cjzNTXD2acrv_MBA4MnZTNFEoJZGnk_GZzhaKNWEFospqxee_1786181455357_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">EY</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Forensic &amp; Integrity Services</h4>
+            <p class="sim-org">EY · Forage</p>
+            <p class="sim-desc">Investigated fraud complaints and analysed financial data with a global forensics team.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/Z3pPDqCPapFTSGBgi/G4Kp6b2rhsyavQdaa_Z3pPDqCPapFTSGBgi_GZzhaKNWEFospqxee_1788688919134_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">EY</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Audit</h4>
+            <p class="sim-org">EY · Forage</p>
+            <p class="sim-desc">Practised client risk assessment and audit testing on a sample engagement.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/Z3pPDqCPapFTSGBgi/d2mpB4NEF4HQBkbhE_Z3pPDqCPapFTSGBgi_GZzhaKNWEFospqxee_1788775490682_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">KPMG</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Career Catalyst: Tax</h4>
+            <p class="sim-org">KPMG · Forage</p>
+            <p class="sim-desc">Explored corporate tax advisory work and career paths in KPMG's tax practice.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/dqdMvpBtAYYtbbNge/AQx4i8JTDDJrMAq4F_dqdMvpBtAYYtbbNge_GZzhaKNWEFospqxee_1787661141876_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">WF</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Commercial Banking</h4>
+            <p class="sim-org">Wells Fargo · Forage</p>
+            <p class="sim-desc">Analysed client financials to build a growth-focused banking proposal.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/nkmk7gJitYs4TBvoA/AQKJ8jdotFCzz5WmM_nkmk7gJitYs4TBvoA_GZzhaKNWEFospqxee_1786989298699_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">SC</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Banking &amp; Coverage</h4>
+            <p class="sim-org">Standard Chartered · Forage</p>
+            <p class="sim-desc">Worked a corporate coverage brief — client due diligence and a lending view.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/ZsgybEFo5RxyHxwXL/TwxTEuyPugfgMGm8H_ZsgybEFo5RxyHxwXL_GZzhaKNWEFospqxee_1786383327488_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
+        <div class="sim-card">
+          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-content">
+            <div class="sim-top-row">
+              <span class="sim-logo-tag">BofA</span>
+              <span class="sim-badge">✓ Completed</span>
+            </div>
+            <h4>Investment Banking</h4>
+            <p class="sim-org">Bank of America · Forage</p>
+            <p class="sim-desc">Built a sell-side pitch, from company screening to a final recommendation.</p>
+            <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/fMCqmt8qR4G85Puue/Hi8MJQE5T3MeTRWQR_fMCqmt8qR4G85Puue_GZzhaKNWEFospqxee_1759155114638_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
+          </div>
+        </div>
+
       </div>
     </div>
+    <p class="sim-hint">Scroll → for more</p>
   </div>
 </section>
 
