@@ -214,6 +214,7 @@ img,svg{max-width:100%; display:block;}
 .ticker-item.up{color:#7FC69B;}
 .ticker-item.down{color:#D98B7A;}
 
+/* ===== UPDATED HERO STYLES ===== */
 .hero{
   background:var(--navy-900);
   color:#fff;
@@ -222,39 +223,36 @@ img,svg{max-width:100%; display:block;}
 .hero-grid{
   display:grid;
   grid-template-columns:1.1fr 0.9fr;
-  gap:56px;
+  gap:64px;
   align-items:center;
-}
-.hero-top-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:32px;
-}
-.profile-photo{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid var(--gold-500);
-  flex-shrink:0;
 }
 .hero-kicker{
   font-family:var(--mono);
   font-size:13px;
   color:var(--gold-300);
-  margin-bottom:18px;
+  margin-bottom:24px;
+}
+.typing-wrapper {
+  min-height: 180px; /* Prevents layout shifting during typing */
+  margin-bottom: 32px;
 }
 .hero-name{
-  font-size:clamp(40px, 5.4vw, 68px);
+  font-size:clamp(38px, 4.5vw, 64px);
   color:#fff;
+  line-height: 1.25;
+  margin-bottom: 12px;
 }
 .hero-line{
-  margin-top:22px;
-  max-width:46ch;
-  font-size:18px;
-  line-height:1.6;
-  color:#C4CBDA;
+  font-size:clamp(20px, 2.5vw, 26px);
+  font-family: var(--sans);
+  font-weight: 400;
+  color:var(--gold-300);
+  margin-top: 14px;
+}
+.typed-cursor {
+  color: var(--gold-500); /* Matches cursor to theme */
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
 }
 .hero-actions{
   display:flex;
@@ -272,16 +270,21 @@ img,svg{max-width:100%; display:block;}
   color:#9EA9C0;
 }
 .hero-contact a:hover{color:var(--gold-300);}
-.hero-chart{opacity:0.95;}
-.chart-line{
-  stroke-dasharray:900;
-  stroke-dashoffset:900;
-  animation:draw-line 1.6s ease forwards 0.3s;
+
+.hero-image-wrapper {
+  display: flex;
+  justify-content: center;
 }
-@keyframes draw-line{to{stroke-dashoffset:0;}}
-@media (prefers-reduced-motion: reduce){
-  .chart-line{stroke-dashoffset:0; animation:none;}
+.hero-portrait {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--navy-700);
+  box-shadow: 0 24px 48px rgba(8, 18, 38, 0.5);
+  object-fit: cover;
 }
+/* =============================== */
 
 .lede{
   font-size:20px;
@@ -417,7 +420,6 @@ img,svg{max-width:100%; display:block;}
 }
 .project-link-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 
-/* ===== Job simulations ===== */
 .sim-scroll{
   overflow-x:auto;
   overflow-y:hidden;
@@ -444,7 +446,6 @@ img,svg{max-width:100%; display:block;}
   background:var(--navy-800);
   padding:12px;
 }
-
 .sim-photo{
   width:84px;
   flex-shrink:0;
@@ -537,7 +538,6 @@ img,svg{max-width:100%; display:block;}
   margin-top:14px;
 }
 
-/* ===== Certificate Carousel ===== */
 .cert-slider {
   display: flex;
   gap: 32px;
@@ -594,6 +594,83 @@ img,svg{max-width:100%; display:block;}
   height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+
+.skills-interactive-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: start;
+}
+.skills-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-tab {
+  background: transparent;
+  border: 1px solid var(--navy-700);
+  color: #C4CBDA;
+  text-align: left;
+  padding: 16px 20px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.skill-tab:hover {
+  border-color: var(--gold-500);
+  color: #fff;
+}
+.skill-tab.active {
+  background: var(--navy-800);
+  border-left: 4px solid var(--gold-500);
+  border-color: var(--navy-700);
+  border-left-color: var(--gold-500);
+  color: var(--gold-300);
+}
+.skills-display {
+  background: var(--navy-950);
+  border: 1px solid var(--navy-700);
+  border-radius: 4px;
+  padding: 32px;
+  min-height: 280px; 
+  position: relative;
+  overflow: hidden;
+}
+.skill-pane {
+  display: none;
+  animation: slide-in-fade 0.4s ease forwards;
+}
+.skill-pane.active {
+  display: block;
+}
+@keyframes slide-in-fade {
+  from { opacity: 0; transform: translateX(15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.skill-pane ul {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.skill-pane li {
+  color: #D6DAE6;
+  font-size: 16px;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+.skill-pane li::before {
+  content: "";
+  position: absolute;
+  left: 0; 
+  top: 10px;
+  width: 6px; 
+  height: 1px;
+  background: var(--gold-500);
 }
 
 .activity-list{
@@ -654,72 +731,6 @@ img,svg{max-width:100%; display:block;}
   padding:18px 0;
 }
 
-/* =========================================
-   Skills Side Drawer Styles
-   ========================================= */
-.skills-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 420px;
-  max-width: 90vw;
-  height: 100vh;
-  background: var(--navy-950);
-  border-left: 1px solid var(--navy-700);
-  z-index: 1000;
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -15px 0 40px rgba(8, 18, 38, 0.6);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-.skills-drawer.open {
-  transform: translateX(0);
-}
-
-.skills-drawer-header {
-  padding: 32px;
-  border-bottom: 1px solid var(--navy-700);
-  background: var(--navy-900);
-}
-
-.skills-drawer-header h2 {
-  margin: 0;
-  color: var(--gold-300);
-  font-family: var(--serif);
-  font-size: 26px;
-}
-
-.skills-drawer-content {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.drawer-skill-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.drawer-skill-title {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--gold-500);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.drawer-skill-items {
-  color: #D6DAE6;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-/* Print Styles for Recruiters */
 @media print {
   .site-header, .ticker, .hero-actions, .sim-scroll, .site-footer {
     display: none !important;
@@ -765,10 +776,15 @@ img,svg{max-width:100%; display:block;}
   .header-inner .btn{display:none;}
 
   .hero-grid{grid-template-columns:1fr; gap:44px;}
-  .hero-chart{order:-1; max-width:320px;}
-  .profile-photo{width:96px; height:96px;}
+  .hero-image-wrapper { order: -1; }
+  .hero-portrait { max-width: 320px; }
   
   .cert-card { flex: 0 0 92%; }
+}
+
+@media (max-width:768px){
+  .skills-interactive-container { grid-template-columns: 1fr; gap: 24px; }
+  .skills-display { padding: 24px; min-height: 220px; }
 }
 
 @media (max-width:640px){
@@ -776,14 +792,13 @@ img,svg{max-width:100%; display:block;}
   .container{padding:0 20px;}
   .project-grid{grid-template-columns:1fr;}
   .summary-stats{grid-template-columns:1fr 1fr; gap:28px 20px;}
-  .skills-grid{grid-template-columns:1fr; gap:40px;}
   .footer-grid{flex-direction:column; align-items:flex-start;}
-  .hero-name{font-size:44px;}
-  .hero-top-row{flex-direction:column-reverse; align-items:flex-start; gap:20px;}
   .sim-card{flex-basis:250px;}
+  .typing-wrapper { min-height: 140px; }
 }
-
 </style>
+<!-- Include Typed.js for the typing effect -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
 
@@ -814,53 +829,39 @@ img,svg{max-width:100%; display:block;}
 
 <main>
 
+<!-- ===== UPDATED HERO SECTION ===== -->
 <section class="hero" id="hero">
   <div class="container hero-grid fade-up">
+    
     <div class="hero-copy">
-      <div class="hero-top-row">
-        <div>
-          <p class="hero-kicker">Jamshedpur, India</p>
-          <h1 class="hero-name">Sushil Kumar<br>Singh</h1>
-        </div>
-        <img src="assets/profile.png" alt="Sushil Kumar Singh" class="profile-photo">
+      <p class="hero-kicker">Jamshedpur, India</p>
+      
+      <!-- Chained Typing Animation Wrapper -->
+      <div class="typing-wrapper">
+        <h1 class="hero-name">
+          <span id="typed-phase1"></span>
+        </h1>
+        <h2 class="hero-line" id="phase2-wrapper" style="display: none;">
+          <span id="typed-phase2"></span>
+        </h2>
       </div>
-      <p class="hero-line">BBA Finance graduate building a career in equity research, investment
-        banking, FP&amp;A and risk &amp; forensic consulting — grounded in SEBI‑compliant
-        operations and DCF modelling.</p>
+
       <div class="hero-actions">
         <a class="btn btn-gold" href="assets/Sushil_Singh_Resume.pdf" download>Download résumé (PDF)</a>
         <a class="btn btn-ghost" href="#projects">View projects</a>
       </div>
+      
       <ul class="hero-contact">
         <li><a href="mailto:sushilkrsingh7061@gmail.com">sushilkrsingh7061@gmail.com</a></li>
         <li><a href="tel:+917061707350">+91 70617 07350</a></li>
         <li><a href="https://linkedin.com/in/sushilkrsingh03" target="_blank" rel="noopener">linkedin.com/in/sushilkrsingh03</a></li>
       </ul>
     </div>
-    <div class="hero-chart" aria-hidden="true">
-      <svg viewBox="0 0 460 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="40" y1="40" x2="40" y2="310" stroke="#223862" stroke-width="1"/>
-        <line x1="40" y1="310" x2="430" y2="310" stroke="#223862" stroke-width="1"/>
-        <line x1="40" y1="245" x2="430" y2="245" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
-        <line x1="40" y1="180" x2="430" y2="180" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
-        <line x1="40" y1="115" x2="430" y2="115" stroke="#1B2E52" stroke-width="1" stroke-dasharray="2 6"/>
-        <polyline points="40,275 85,290 130,255 175,265 220,210 265,225 310,150 355,175 400,95 430,70"
-          stroke="#C7A252" stroke-width="2.5" fill="none" stroke-linejoin="round" stroke-linecap="round" class="chart-line"/>
-        <polygon points="40,275 85,290 130,255 175,265 220,210 265,225 310,150 355,175 400,95 430,70 430,310 40,310"
-          fill="url(#chartFade)" opacity="0.5"/>
-        <defs>
-          <linearGradient id="chartFade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#C7A252" stop-opacity="0.35"/>
-            <stop offset="1" stop-color="#C7A252" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <circle cx="400" cy="95" r="4" fill="#E3C878"/>
-        <circle cx="430" cy="70" r="4" fill="#E3C878"/>
-        <text x="40" y="330" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="11">2022</text>
-        <text x="405" y="330" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="11">2026</text>
-        <text x="330" y="60" fill="#E3C878" font-family="IBM Plex Mono" font-size="12">CGPA 8.93</text>
-      </svg>
+    
+    <div class="hero-image-wrapper">
+      <img src="assets/profile.png" alt="Sushil Kumar Singh" class="hero-portrait">
     </div>
+    
   </div>
 </section>
 
@@ -917,13 +918,11 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
-<!-- ===== UPDATED PROJECTS SECTION ===== -->
 <section class="section section-light" id="projects">
   <div class="container fade-up">
     <p class="section-label">03 — Featured projects</p>
     <div class="project-grid">
 
-      <!-- Card 1: Varun Beverages -->
       <article class="project-card">
         <div class="project-head">
           <h3>Varun Beverages — Financial Modelling &amp; Valuation</h3>
@@ -935,7 +934,6 @@ img,svg{max-width:100%; display:block;}
         </div>
       </article>
 
-      <!-- Card 2: Nestlé India -->
       <article class="project-card">
         <div class="project-head">
           <h3>Nestlé India — Equity Valuation &amp; Fundamental Analysis</h3>
@@ -956,7 +954,6 @@ img,svg{max-width:100%; display:block;}
     <p class="section-label">04 — Job simulations</p>
     <div class="sim-scroll">
       <div class="sim-row">
-
         <div class="sim-card">
           <div class="sim-photo gs">GS</div>
           <div class="sim-content">
@@ -1054,7 +1051,6 @@ img,svg{max-width:100%; display:block;}
             <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/fMCqmt8qR4G85Puue/Hi8MJQE5T3MeTRWQR_fMCqmt8qR4G85Puue_GZzhaKNWEFospqxee_1759155114638_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
           </div>
         </div>
-
       </div>
     </div>
     <p class="sim-hint">Scroll → for more</p>
@@ -1068,7 +1064,6 @@ img,svg{max-width:100%; display:block;}
     
     <div class="cert-slider">
       
-      <!-- Certificate Card 1 -->
       <div class="cert-card">
         <div class="cert-header">
           <h4>Financial Analysis &amp; Modelling</h4>
@@ -1079,7 +1074,6 @@ img,svg{max-width:100%; display:block;}
         </a>
       </div>
 
-      <!-- Certificate Card 2 -->
       <div class="cert-card">
         <div class="cert-header">
           <h4>Introduction to Corporate Finance</h4>
@@ -1090,7 +1084,6 @@ img,svg{max-width:100%; display:block;}
         </a>
       </div>
 
-      <!-- Certificate Card 3 -->
       <div class="cert-card">
         <div class="cert-header">
           <h4>McKinsey Forward Program</h4>
@@ -1101,7 +1094,6 @@ img,svg{max-width:100%; display:block;}
         </a>
       </div>
 
-      <!-- Certificate Card 4 -->
       <div class="cert-card">
         <div class="cert-header">
           <h4>Diploma in Computer Applications</h4>
@@ -1112,7 +1104,6 @@ img,svg{max-width:100%; display:block;}
         </a>
       </div>
 
-      <!-- Certificate Card 5 -->
       <div class="cert-card">
         <div class="cert-header">
           <h4>Digital Productivity Certification</h4>
@@ -1127,9 +1118,75 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
+<!-- Interactive Skills Section -->
+<section class="section section-dark" id="skills">
+  <div class="container fade-up">
+    <p class="section-label">06 — Skills</p>
+    
+    <div class="skills-interactive-container">
+      
+      <!-- Left Side: Interactive Tabs -->
+      <div class="skills-tabs">
+        <button class="skill-tab active" data-target="finance">Accounting &amp; Finance</button>
+        <button class="skill-tab" data-target="banking">Banking &amp; Financial Operations</button>
+        <button class="skill-tab" data-target="tools">Tools &amp; Data Analytics</button>
+        <button class="skill-tab" data-target="soft">Business &amp; Soft Skills</button>
+      </div>
+      
+      <!-- Right Side: Dynamic Content Panel -->
+      <div class="skills-display">
+        
+        <div class="skill-pane active" id="finance">
+          <ul>
+            <li>Financial Accounting</li>
+            <li>Financial Statement Analysis</li>
+            <li>DCF &amp; Equity Valuation</li>
+            <li>3-Statement Modelling</li>
+            <li>Ratio Analysis</li>
+            <li>WACC &amp; CAPM</li>
+          </ul>
+        </div>
+        
+        <div class="skill-pane" id="banking">
+          <ul>
+            <li>Mutual Fund Operations</li>
+            <li>BSE STAR MF</li>
+            <li>KYC Documentation</li>
+            <li>SEBI Compliance</li>
+            <li>Transaction Processing &amp; Reconciliation</li>
+            <li>Client Servicing</li>
+          </ul>
+        </div>
+        
+        <div class="skill-pane" id="tools">
+          <ul>
+            <li>Advanced Excel (VLOOKUP, Pivot Tables, Scenario Analysis)</li>
+            <li>Power BI</li>
+            <li>Tally</li>
+            <li>MS Word &amp; MS PowerPoint</li>
+          </ul>
+        </div>
+        
+        <div class="skill-pane" id="soft">
+          <ul>
+            <li>Market &amp; Industry Analysis</li>
+            <li>Analytical Thinking &amp; Problem Solving</li>
+            <li>Client Relationship Management</li>
+            <li>Attention to Detail</li>
+            <li>Teamwork &amp; Adaptability</li>
+            <li>Time Management</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+</section>
+
 <section class="section section-light" id="activities">
   <div class="container narrow fade-up">
-    <p class="section-label">06 — Activities</p>
+    <p class="section-label">07 — Activities</p>
     <ul class="activity-list">
       <li><strong>Top 1% performer</strong> — Research Methodology and Business Ethics, NPTEL (IIT Madras).</li>
       <li><strong>Rotaract Club member</strong>, Arka Jain University — engaged in social &amp; community programs.</li>
@@ -1158,36 +1215,6 @@ img,svg{max-width:100%; display:block;}
   </div>
   <p class="footer-copy">© 2026 Sushil Kumar Singh.</p>
 </footer>
-
-<!-- SKILLS SIDE DRAWER -->
-<aside id="skills-drawer" class="skills-drawer" aria-hidden="true">
-  <div class="skills-drawer-header">
-    <h2>Skills & Expertise</h2>
-  </div>
-  <div class="skills-drawer-content">
-    
-    <div class="drawer-skill-group">
-      <h3 class="drawer-skill-title">Accounting & Finance</h3>
-      <p class="drawer-skill-items">Financial Accounting &bull; Financial Statement Analysis &bull; 3-Statement Modelling &bull; DCF & Equity Valuation &bull; WACC & CAPM &bull; Ratio Analysis</p>
-    </div>
-    
-    <div class="drawer-skill-group">
-      <h3 class="drawer-skill-title">Banking & Financial Operations</h3>
-      <p class="drawer-skill-items">Mutual Fund Operations &bull; BSE STAR MF &bull; Transaction Processing & Reconciliation &bull; KYC Documentation &bull; SEBI Compliance &bull; Client Servicing</p>
-    </div>
-    
-    <div class="drawer-skill-group">
-      <h3 class="drawer-skill-title">Tools & Data Analytics</h3>
-      <p class="drawer-skill-items">Advanced Excel (VLOOKUP/XLOOKUP, Pivot Tables, Scenario Analysis) &bull; Power BI &bull; Tally &bull; MS PowerPoint & Word</p>
-    </div>
-    
-    <div class="drawer-skill-group">
-      <h3 class="drawer-skill-title">Business & Soft Skills</h3>
-      <p class="drawer-skill-items">Market & Industry Analysis &bull; Analytical Thinking &bull; Problem Solving &bull; Client Relationship Management &bull; Teamwork &bull; Adaptability &bull; Time Management</p>
-    </div>
-    
-  </div>
-</aside>
 
 <script>
 (function(){
@@ -1270,38 +1297,57 @@ img,svg{max-width:100%; display:block;}
     fadeElements.forEach(function(el){ el.classList.add('visible'); });
   }
 
-  // Skills Drawer Hover Logic
-  var skillsTrigger = document.querySelector('a[href="#skills"]');
-  var skillsDrawer = document.getElementById('skills-drawer');
-  var drawerTimeout;
+  // ===== Interactive Skills Section Logic =====
+  var skillTabs = document.querySelectorAll('.skill-tab');
+  var skillPanes = document.querySelectorAll('.skill-pane');
 
-  if(skillsTrigger && skillsDrawer) {
-    function openDrawer() {
-      clearTimeout(drawerTimeout);
-      skillsDrawer.classList.add('open');
-      skillsDrawer.setAttribute('aria-hidden', 'false');
-    }
+  if (skillTabs.length > 0) {
+    skillTabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        skillTabs.forEach(function(t) { t.classList.remove('active'); });
+        // Add active class to the clicked tab
+        this.classList.add('active');
+        
+        // Hide all panes
+        skillPanes.forEach(function(p) { p.classList.remove('active'); });
+        
+        // Show the target pane
+        var targetId = this.getAttribute('data-target');
+        var targetPane = document.getElementById(targetId);
+        if (targetPane) {
+          targetPane.classList.add('active');
+        }
+      });
+    });
+  }
 
-    function closeDrawer() {
-      // 400ms delay gives the user time to move their mouse from the nav link over to the side drawer without it closing abruptly
-      drawerTimeout = setTimeout(function() {
-        skillsDrawer.classList.remove('open');
-        skillsDrawer.setAttribute('aria-hidden', 'true');
-      }, 400); 
-    }
-
-    // Listen for hover on the nav link
-    skillsTrigger.addEventListener('mouseenter', openDrawer);
-    skillsTrigger.addEventListener('mouseleave', closeDrawer);
-
-    // Keep it open if they move the mouse into the drawer itself
-    skillsDrawer.addEventListener('mouseenter', openDrawer);
-    skillsDrawer.addEventListener('mouseleave', closeDrawer);
-    
-    // Prevent the default anchor jump if they actually click it
-    skillsTrigger.addEventListener('click', function(e){
-      e.preventDefault();
-      openDrawer();
+  // ===== Typed.js Sequential Typing Animation =====
+  if (document.getElementById('typed-phase1')) {
+    var phase1 = new Typed('#typed-phase1', {
+      // Phase 1 types out once and stops
+      strings: ["Hi, I am Sushil<br>and I am a driven Finance Professional."],
+      typeSpeed: 45,
+      showCursor: true,
+      cursorChar: '|',
+      onComplete: function(self) {
+        // Hide the Phase 1 cursor so we don't have two cursors on screen
+        document.querySelector('#typed-phase1 + .typed-cursor').style.display = 'none';
+        
+        // Unhide the Phase 2 container wrapper (acts as the line break/space)
+        document.getElementById('phase2-wrapper').style.display = 'block';
+        
+        // Start Phase 2 looping animation
+        var phase2 = new Typed('#typed-phase2', {
+          strings: ["Financial Analyst.", "Equity Researcher.", "FP&A Specialist."],
+          typeSpeed: 60,
+          backSpeed: 40,
+          backDelay: 1500,
+          loop: true,
+          showCursor: true,
+          cursorChar: '|'
+        });
+      }
     });
   }
 
