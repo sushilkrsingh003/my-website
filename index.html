@@ -396,72 +396,10 @@ img,svg{max-width:100%; display:block;}
   font-size:14.5px;
   line-height:1.65;
 }
-.project-toggle{
-  align-self:flex-start;
-  background:none;
-  border:none;
-  border-bottom:1px solid var(--gold-500);
-  color:var(--navy-900);
-  font-weight:600;
-  font-size:14px;
-  padding:2px 0;
-}
-.project-toggle:hover{color:var(--gold-500);}
-.project-detail{
-  display:grid;
-  grid-template-rows:0fr;
-  overflow:hidden;
-  transition:grid-template-rows .32s ease;
-}
-.project-detail > *{min-height:0; overflow:hidden;}
-.project-card.open .project-detail{grid-template-rows:1fr;}
-.project-detail ul{
-  padding-top:14px;
-  border-top:1px solid var(--paper-2);
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-}
-.project-detail li{
-  font-size:14px;
-  color:var(--slate-dark);
-  line-height:1.6;
-  padding-left:16px;
-  position:relative;
-}
-.project-detail li::before{
-  content:"";
-  position:absolute; left:0; top:8px;
-  width:5px; height:1px;
-  background:var(--gold-500);
-}
-.mini-dash{
-  background:var(--navy-900);
-  padding:18px;
-  margin-top:6px;
-}
-.mini-dash-metrics{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px solid var(--navy-700);
-}
-.mini-dash-metrics dt{
-  font-family:var(--mono);
-  font-size:11px;
-  color:var(--slate);
-}
-.mini-dash-metrics dd{
-  margin:4px 0 0;
-  font-family:var(--serif);
-  font-size:17px;
-  color:var(--gold-300);
-}
 .project-link-row{
   padding-top:14px;
   border-top:1px solid var(--paper-2);
+  margin-top:auto; /* Pins button to the bottom for equal card heights */
 }
 .project-link-btn{
   display:inline-flex;
@@ -475,6 +413,7 @@ img,svg{max-width:100%; display:block;}
   font-size:14px;
   border-radius:2px;
   transition:background-color .18s ease;
+  width: 100%;
 }
 .project-link-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 
@@ -598,7 +537,7 @@ img,svg{max-width:100%; display:block;}
   margin-top:14px;
 }
 
-/* ===== NEW: Certificate Carousel (Based on User Sketch) ===== */
+/* ===== Certificate Carousel ===== */
 .cert-slider {
   display: flex;
   gap: 32px;
@@ -614,7 +553,7 @@ img,svg{max-width:100%; display:block;}
 .cert-slider::-webkit-scrollbar-thumb { background: var(--navy-700); border-radius: 4px; }
 
 .cert-card {
-  flex: 0 0 85%; /* This ensures the next certificate 'peeks' from the right */
+  flex: 0 0 85%;
   max-width: 640px;
   scroll-snap-align: center;
   display: flex;
@@ -638,7 +577,7 @@ img,svg{max-width:100%; display:block;}
 .cert-image {
   display: block;
   width: 100%;
-  aspect-ratio: 1.414 / 1; /* Standard A4 Landscape Ratio for Certificates */
+  aspect-ratio: 1.414 / 1;
   border: 1px solid var(--paper-2);
   border-radius: 8px;
   background: #fff;
@@ -747,7 +686,7 @@ img,svg{max-width:100%; display:block;}
 
 /* Print Styles for Recruiters */
 @media print {
-  .site-header, .ticker, .hero-actions, .project-toggle, .sim-scroll, .site-footer {
+  .site-header, .ticker, .hero-actions, .sim-scroll, .site-footer {
     display: none !important;
   }
   body, .section-dark, .section-light, .hero, .mini-dash, .sim-card {
@@ -759,7 +698,6 @@ img,svg{max-width:100%; display:block;}
   }
   .hero { padding: 0 0 40px !important; border-bottom: 2px solid #000; }
   .section { padding: 30px 0 !important; page-break-inside: avoid; }
-  .project-detail { grid-template-rows: 1fr !important; }
   .project-card, .sim-card { border: 1px solid #ccc !important; }
 }
 
@@ -795,7 +733,7 @@ img,svg{max-width:100%; display:block;}
   .hero-chart{order:-1; max-width:320px;}
   .profile-photo{width:96px; height:96px;}
   
-  .cert-card { flex: 0 0 92%; } /* Take up slightly more space on mobile screens */
+  .cert-card { flex: 0 0 92%; }
 }
 
 @media (max-width:640px){
@@ -944,76 +882,33 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
+<!-- ===== UPDATED PROJECTS SECTION ===== -->
 <section class="section section-light" id="projects">
   <div class="container fade-up">
     <p class="section-label">03 — Featured projects</p>
     <div class="project-grid">
 
+      <!-- Card 1: Varun Beverages -->
       <article class="project-card">
         <div class="project-head">
           <h3>Varun Beverages — Financial Modelling &amp; Valuation</h3>
           <span class="tag">FP&amp;A / Modelling</span>
         </div>
-        <p>Three-statement operating model with FCFF/DCF and WACC–CAPM valuation, DuPont
-          decomposition, Altman Z-Score, and a Monte Carlo VaR simulation for downside risk.</p>
-        <button class="project-toggle" aria-expanded="false">Open model dashboard</button>
-        <div class="project-detail">
-          <div class="mini-dash">
-            <div class="mini-dash-chart">
-              <svg viewBox="0 0 300 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <text x="0" y="12" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="9">FCFF PROJECTION (₹ CR, FY26–FY30)</text>
-                <g transform="translate(0,20)">
-                  <rect x="0"   y="70" width="34" height="40" fill="#223862"/>
-                  <rect x="52"  y="58" width="34" height="52" fill="#223862"/>
-                  <rect x="104" y="44" width="34" height="66" fill="#223862"/>
-                  <rect x="156" y="26" width="34" height="84" fill="#C7A252"/>
-                  <rect x="208" y="10" width="34" height="100" fill="#C7A252"/>
-                  <text x="10" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY26</text>
-                  <text x="62" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY27</text>
-                  <text x="112" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY28</text>
-                  <text x="164" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY29</text>
-                  <text x="216" y="122" fill="#7C8AA0" font-family="IBM Plex Mono" font-size="8">FY30</text>
-                </g>
-              </svg>
-            </div>
-            <dl class="mini-dash-metrics">
-              <div><dt>WACC</dt><dd>11.2%</dd></div>
-              <div><dt>Altman Z-Score</dt><dd>3.4 · Safe zone</dd></div>
-              <div><dt>DuPont ROE</dt><dd>18.6%</dd></div>
-              <div><dt>1-Year VaR (95%)</dt><dd>−12.8%</dd></div>
-            </dl>
-          </div>
-          <ul>
-            <li>Three-statement model linking income statement, balance sheet and cash flow with circularity checks.</li>
-            <li>FCFF/DCF valuation cross-referenced with a CAPM-derived cost of equity.</li>
-            <li>DuPont decomposition and Altman Z-Score to sanity-check profitability and solvency.</li>
-            <li>Monte Carlo simulation (10,000 trials) to estimate Value-at-Risk on the equity position.</li>
-          </ul>
-        </div>
+        <p>Built a comprehensive three-statement operating model. Conducted FCFF/DCF valuation cross-referenced with CAPM. Assessed profitability and solvency using DuPont decomposition and Altman Z-Score, alongside a 10,000-trial Monte Carlo VaR simulation for downside risk.</p>
         <div class="project-link-row">
-          <a class="project-link-btn" href="https://drive.google.com/file/d/1ipH5kwSMuUGo_jJjlHApCvH8l4QzETaF/view?usp=drive_link" target="_blank" rel="noopener">Click to view</a>
+          <a class="project-link-btn" href="https://drive.google.com/file/d/1ipH5kwSMuUGo_jJjlHApCvH8l4QzETaF/view?usp=drive_link" target="_blank" rel="noopener">View Financial Model</a>
         </div>
       </article>
 
+      <!-- Card 2: Nestlé India -->
       <article class="project-card">
         <div class="project-head">
           <h3>Nestlé India — Equity Valuation &amp; Fundamental Analysis</h3>
-          <span class="tag">Equity Research</span>
+          <span class="tag">Academic Research / Equity Valuation</span>
         </div>
-        <p>DCF valuation, ROIC–WACC spread analysis, and a Porter's Five Forces read on the FMCG
-          category, benchmarked against HUL, ITC and Britannia. Packaged as a 12-slide,
-          client-ready pitch deck.</p>
-        <button class="project-toggle" aria-expanded="false">View case study</button>
-        <div class="project-detail">
-          <ul>
-            <li>Intrinsic value derived via discounted cash flow, cross-checked against comparable-company multiples.</li>
-            <li>Peer comparison across HUL, ITC and Britannia on margin, ROIC and growth quality.</li>
-            <li>Porter's Five Forces framework applied to the Indian FMCG landscape to stress-test the moat.</li>
-            <li>Findings condensed into a 12-slide pitch deck aimed at a buy-side audience.</li>
-          </ul>
-        </div>
+        <p>Authored a comprehensive academic research report analyzing the FMCG sector. Performed DCF valuation and ROIC-WACC spread analysis to determine intrinsic value. Evaluated strategic positioning using Porter’s Five Forces and benchmarked financial performance against industry peers like HUL, ITC, and Britannia.</p>
         <div class="project-link-row">
-          <a class="project-link-btn" href="https://drive.google.com/file/d/1p-ladovIeQWBJONUVkzb3QKChPDhPB8u/view?usp=drivesdk" target="_blank" rel="noopener">Click to view</a>
+          <a class="project-link-btn" href="https://drive.google.com/file/d/1p-ladovIeQWBJONUVkzb3QKChPDhPB8u/view?usp=drivesdk" target="_blank" rel="noopener">Read Research Report</a>
         </div>
       </article>
 
@@ -1131,7 +1026,7 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
-<!-- ===== NEW CERTIFICATE LAYOUT ===== -->
+<!-- Certificate Carousel -->
 <section class="section section-light" id="certifications">
   <div class="container fade-up">
     <p class="section-label">05 — Certifications &amp; courses</p>
@@ -1338,17 +1233,6 @@ img,svg{max-width:100%; display:block;}
   } else {
     fadeElements.forEach(function(el){ el.classList.add('visible'); });
   }
-
-  // Accordion Button Fix
-  document.querySelectorAll(".project-toggle").forEach(function(btn){
-    var defaultText = btn.textContent.trim();
-    btn.addEventListener("click", function(){
-      var card = btn.closest(".project-card");
-      var isOpen = card.classList.toggle("open");
-      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      btn.textContent = isOpen ? "Close" : defaultText;
-    });
-  });
 
 })();
 </script>
