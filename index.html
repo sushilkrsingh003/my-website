@@ -77,6 +77,17 @@ img,svg{max-width:100%; display:block;}
 }
 .section-dark .section-label{color:var(--gold-300);}
 
+/* Scroll Animation Classes */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -467,7 +478,7 @@ img,svg{max-width:100%; display:block;}
 }
 .project-link-btn:hover{background:var(--gold-500); color:var(--navy-950);}
 
-/* ===== Job simulations — single-row scroll, Forage-style photo cards ===== */
+/* ===== Job simulations ===== */
 .sim-scroll{
   overflow-x:auto;
   overflow-y:hidden;
@@ -494,14 +505,26 @@ img,svg{max-width:100%; display:block;}
   background:var(--navy-800);
   padding:12px;
 }
+
 .sim-photo{
   width:84px;
   flex-shrink:0;
   border-radius:2px;
-  background-size:cover;
-  background-position:center;
-  background-color:var(--navy-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
 }
+.sim-photo.gs { background: #7399C6; } 
+.sim-photo.ey { background: #FFE600; color: #2E2E38; font-family: var(--sans); } 
+.sim-photo.kpmg { background: #00338D; font-family: var(--sans); font-size: 22px; } 
+.sim-photo.wf { background: #D71E28; } 
+.sim-photo.sc { background: #00A546; } 
+.sim-photo.bofa { background: #012169; } 
+
 .sim-content{
   display:flex;
   flex-direction:column;
@@ -575,43 +598,63 @@ img,svg{max-width:100%; display:block;}
   margin-top:14px;
 }
 
-.cert-list{
-  border-top:1px solid var(--paper-2);
+/* ===== NEW: Certificate Carousel (Based on User Sketch) ===== */
+.cert-slider {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 32px 4px;
+  margin: 0 -12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--navy-700) transparent;
 }
-.cert-list li{border-bottom:1px solid var(--paper-2);}
-.cert-list a,
-.cert-static{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  gap:16px;
-  padding:20px 4px;
-  flex-wrap:wrap;
+.cert-slider::-webkit-scrollbar { height: 6px; }
+.cert-slider::-webkit-scrollbar-track { background: transparent; }
+.cert-slider::-webkit-scrollbar-thumb { background: var(--navy-700); border-radius: 4px; }
+
+.cert-card {
+  flex: 0 0 85%; /* This ensures the next certificate 'peeks' from the right */
+  max-width: 640px;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.cert-list a{transition:padding-left .15s ease;}
-.cert-list a:hover{padding-left:10px; color:var(--navy-900);}
-.cert-name{
-  font-family:var(--serif);
-  font-size:17px;
-  color:var(--ink);
+.cert-header {
+  padding-left: 4px;
 }
-.cert-org{
-  font-family:var(--mono);
-  font-size:12.5px;
-  color:var(--slate-dark);
+.cert-header h4 {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 6px;
 }
-.cert-name-wrap{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.cert-header p {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--slate-dark);
 }
-.cert-thumb{
-  width:36px;
-  height:36px;
-  object-fit:cover;
-  border-radius:4px;
-  border:1px solid var(--paper-2);
-  flex-shrink:0;
+.cert-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.414 / 1; /* Standard A4 Landscape Ratio for Certificates */
+  border: 1px solid var(--paper-2);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(8, 18, 38, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.cert-image:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(8, 18, 38, 0.1);
+}
+.cert-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .skills-grid{
@@ -702,6 +745,24 @@ img,svg{max-width:100%; display:block;}
   padding:18px 0;
 }
 
+/* Print Styles for Recruiters */
+@media print {
+  .site-header, .ticker, .hero-actions, .project-toggle, .sim-scroll, .site-footer {
+    display: none !important;
+  }
+  body, .section-dark, .section-light, .hero, .mini-dash, .sim-card {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .hero-name, h3, .timeline-content h3, .project-head h3, .cert-header h4 {
+    color: #000 !important;
+  }
+  .hero { padding: 0 0 40px !important; border-bottom: 2px solid #000; }
+  .section { padding: 30px 0 !important; page-break-inside: avoid; }
+  .project-detail { grid-template-rows: 1fr !important; }
+  .project-card, .sim-card { border: 1px solid #ccc !important; }
+}
+
 @media (max-width:980px){
   .summary-stats{grid-template-columns:1fr 1fr;}
 }
@@ -733,6 +794,8 @@ img,svg{max-width:100%; display:block;}
   .hero-grid{grid-template-columns:1fr; gap:44px;}
   .hero-chart{order:-1; max-width:320px;}
   .profile-photo{width:96px; height:96px;}
+  
+  .cert-card { flex: 0 0 92%; } /* Take up slightly more space on mobile screens */
 }
 
 @media (max-width:640px){
@@ -745,7 +808,6 @@ img,svg{max-width:100%; display:block;}
   .hero-name{font-size:44px;}
   .hero-top-row{flex-direction:column-reverse; align-items:flex-start; gap:20px;}
   .sim-card{flex-basis:250px;}
-  .sim-photo{width:70px;}
 }
 
 </style>
@@ -780,7 +842,7 @@ img,svg{max-width:100%; display:block;}
 <main>
 
 <section class="hero" id="hero">
-  <div class="container hero-grid">
+  <div class="container hero-grid fade-up">
     <div class="hero-copy">
       <div class="hero-top-row">
         <div>
@@ -830,7 +892,7 @@ img,svg{max-width:100%; display:block;}
 </section>
 
 <section class="section section-light" id="summary">
-  <div class="container narrow">
+  <div class="container narrow fade-up">
     <p class="section-label">01 — Summary</p>
     <p class="lede">Recent BBA Finance graduate (2026, 8.93 CGPA) with hands-on experience in
       transaction processing, regulatory compliance and client service, built through a mutual
@@ -848,7 +910,7 @@ img,svg{max-width:100%; display:block;}
 </section>
 
 <section class="section section-dark" id="experience">
-  <div class="container narrow">
+  <div class="container narrow fade-up">
     <p class="section-label">02 — Experience</p>
     <ol class="timeline">
       <li class="timeline-item">
@@ -883,7 +945,7 @@ img,svg{max-width:100%; display:block;}
 </section>
 
 <section class="section section-light" id="projects">
-  <div class="container">
+  <div class="container fade-up">
     <p class="section-label">03 — Featured projects</p>
     <div class="project-grid">
 
@@ -960,13 +1022,13 @@ img,svg{max-width:100%; display:block;}
 </section>
 
 <section class="section section-dark" id="simulations">
-  <div class="container narrow">
+  <div class="container narrow fade-up">
     <p class="section-label">04 — Job simulations</p>
     <div class="sim-scroll">
       <div class="sim-row">
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo gs">GS</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">GS</span>
@@ -980,13 +1042,13 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo ey">EY</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">EY</span>
               <span class="sim-badge">✓ Completed</span>
             </div>
-            <h4>Forensic &amp; Integrity Services</h4>
+            <h4>Forensics &amp; Integrity</h4>
             <p class="sim-org">EY · Forage</p>
             <p class="sim-desc">Investigated fraud complaints and analysed financial data with a global forensics team.</p>
             <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/Z3pPDqCPapFTSGBgi/G4Kp6b2rhsyavQdaa_Z3pPDqCPapFTSGBgi_GZzhaKNWEFospqxee_1788688919134_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
@@ -994,7 +1056,7 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo ey">EY</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">EY</span>
@@ -1008,7 +1070,7 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo kpmg">KPMG</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">KPMG</span>
@@ -1022,7 +1084,7 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo wf">WF</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">WF</span>
@@ -1036,7 +1098,7 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo sc">SC</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">SC</span>
@@ -1050,7 +1112,7 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=200&amp;q=60')"></div>
+          <div class="sim-photo bofa">BofA</div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">BofA</span>
@@ -1069,61 +1131,74 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
+<!-- ===== NEW CERTIFICATE LAYOUT ===== -->
 <section class="section section-light" id="certifications">
-  <div class="container narrow">
+  <div class="container fade-up">
     <p class="section-label">05 — Certifications &amp; courses</p>
-    <ul class="cert-list">
-      <li>
-        <a href="assets/certs/cfi.png" target="_blank" rel="noopener">
-          <span class="cert-name-wrap">
-            <span class="cert-name">Financial Analysis &amp; Modelling Certification</span>
-            <img class="cert-thumb" src="assets/certs/cfi.png" alt="">
-          </span>
-          <span class="cert-org">Corporate Finance Institute (CFI) · Apr 2025</span>
+    
+    <div class="cert-slider">
+      
+      <!-- Certificate Card 1 -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <h4>Financial Analysis &amp; Modelling</h4>
+          <p>Corporate Finance Institute (CFI) · Apr 2025</p>
+        </div>
+        <a href="assets/certs/cfi.png" target="_blank" rel="noopener" class="cert-image">
+          <img src="assets/certs/cfi.png" alt="CFI Certificate">
         </a>
-      </li>
-      <li>
-        <a href="assets/certs/wharton.png" target="_blank" rel="noopener">
-          <span class="cert-name-wrap">
-            <span class="cert-name">Introduction to Corporate Finance</span>
-            <img class="cert-thumb" src="assets/certs/wharton.png" alt="">
-          </span>
-          <span class="cert-org">Wharton Online, University of Pennsylvania · Oct 2025</span>
+      </div>
+
+      <!-- Certificate Card 2 -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <h4>Introduction to Corporate Finance</h4>
+          <p>Wharton Online, UPenn · Oct 2025</p>
+        </div>
+        <a href="assets/certs/wharton.png" target="_blank" rel="noopener" class="cert-image">
+          <img src="assets/certs/wharton.png" alt="Wharton Corporate Finance Certificate">
         </a>
-      </li>
-      <li>
-        <a href="assets/certs/mckinsey.png" target="_blank" rel="noopener">
-          <span class="cert-name-wrap">
-            <span class="cert-name">McKinsey Forward Program</span>
-            <img class="cert-thumb" src="assets/certs/mckinsey.png" alt="">
-          </span>
-          <span class="cert-org">McKinsey &amp; Company · Dec 2025</span>
+      </div>
+
+      <!-- Certificate Card 3 -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <h4>McKinsey Forward Program</h4>
+          <p>McKinsey &amp; Company · Dec 2025</p>
+        </div>
+        <a href="assets/certs/mckinsey.png" target="_blank" rel="noopener" class="cert-image">
+          <img src="assets/certs/mckinsey.png" alt="McKinsey Forward Certificate">
         </a>
-      </li>
-      <li>
-        <a href="assets/certs/dca.png" target="_blank" rel="noopener">
-          <span class="cert-name-wrap">
-            <span class="cert-name">Diploma in Computer Applications (DCA)</span>
-            <img class="cert-thumb" src="assets/certs/dca.png" alt="">
-          </span>
-          <span class="cert-org">Jamshedpur · Apr 2025</span>
+      </div>
+
+      <!-- Certificate Card 4 -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <h4>Diploma in Computer Applications</h4>
+          <p>Jamshedpur · Apr 2025</p>
+        </div>
+        <a href="assets/certs/dca.png" target="_blank" rel="noopener" class="cert-image">
+          <img src="assets/certs/dca.png" alt="DCA Certificate">
         </a>
-      </li>
-      <li>
-        <a href="assets/certs/niit.png" target="_blank" rel="noopener">
-          <span class="cert-name-wrap">
-            <span class="cert-name">Digital Productivity Certification</span>
-            <img class="cert-thumb" src="assets/certs/niit.png" alt="">
-          </span>
-          <span class="cert-org">NIIT Foundation × UNICEF · Sep 2024</span>
+      </div>
+
+      <!-- Certificate Card 5 -->
+      <div class="cert-card">
+        <div class="cert-header">
+          <h4>Digital Productivity Certification</h4>
+          <p>NIIT Foundation × UNICEF · Sep 2024</p>
+        </div>
+        <a href="assets/certs/niit.png" target="_blank" rel="noopener" class="cert-image">
+          <img src="assets/certs/niit.png" alt="NIIT Digital Productivity Certificate">
         </a>
-      </li>
-    </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <section class="section section-dark" id="skills">
-  <div class="container">
+  <div class="container fade-up">
     <p class="section-label">06 — Skills</p>
     <div class="skills-grid">
       <div class="skills-col">
@@ -1152,7 +1227,7 @@ img,svg{max-width:100%; display:block;}
 </section>
 
 <section class="section section-light" id="activities">
-  <div class="container narrow">
+  <div class="container narrow fade-up">
     <p class="section-label">07 — Activities</p>
     <ul class="activity-list">
       <li><strong>Top 1% performer</strong> — Research Methodology and Business Ethics, NPTEL (IIT Madras).</li>
@@ -1165,7 +1240,7 @@ img,svg{max-width:100%; display:block;}
 </main>
 
 <footer class="site-footer" id="contact">
-  <div class="container footer-grid">
+  <div class="container footer-grid fade-up">
     <div>
       <p class="footer-name">Sushil Kumar Singh</p>
       <p class="footer-line">Jamshedpur, India · Open to relocation</p>
@@ -1248,7 +1323,23 @@ img,svg{max-width:100%; display:block;}
     sections.forEach(function(s){ observer.observe(s); });
   }
 
-  // Yahan button ka fix hai:
+  // Fade Up Scroll Animation Setup
+  var fadeElements = document.querySelectorAll('.fade-up');
+  if("IntersectionObserver" in window && fadeElements.length) {
+    var fadeObserver = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {rootMargin: "0px 0px -10% 0px", threshold: 0.1});
+    fadeElements.forEach(function(el){ fadeObserver.observe(el); });
+  } else {
+    fadeElements.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Accordion Button Fix
   document.querySelectorAll(".project-toggle").forEach(function(btn){
     var defaultText = btn.textContent.trim();
     btn.addEventListener("click", function(){
