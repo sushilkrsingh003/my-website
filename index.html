@@ -1248,18 +1248,18 @@ img,svg{max-width:100%; display:block;}
     sections.forEach(function(s){ observer.observe(s); });
   }
 
+  // Yahan button ka fix hai:
   document.querySelectorAll(".project-toggle").forEach(function(btn){
+    var defaultText = btn.textContent.trim();
     btn.addEventListener("click", function(){
       var card = btn.closest(".project-card");
       var isOpen = card.classList.toggle("open");
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      btn.textContent = isOpen ? "Close" : btn.dataset.label;
+      btn.textContent = isOpen ? "Close" : defaultText;
     });
-    btn.dataset.label = btn.textContent;
   });
 
 })();
-
 </script>
 </body>
 </html>
