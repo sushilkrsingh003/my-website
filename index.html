@@ -399,7 +399,7 @@ img,svg{max-width:100%; display:block;}
 .project-link-row{
   padding-top:14px;
   border-top:1px solid var(--paper-2);
-  margin-top:auto; /* Pins button to the bottom for equal card heights */
+  margin-top:auto;
 }
 .project-link-btn{
   display:inline-flex;
@@ -596,36 +596,6 @@ img,svg{max-width:100%; display:block;}
   object-position: center top;
 }
 
-.skills-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:56px;
-}
-.skills-col h3{
-  color:var(--gold-300);
-  font-size:20px;
-  margin-bottom:20px;
-  padding-bottom:14px;
-  border-bottom:1px solid var(--navy-700);
-}
-.skill-list{
-  display:flex;
-  flex-direction:column;
-  gap:13px;
-}
-.skill-list li{
-  color:#D6DAE6;
-  font-size:15px;
-  padding-left:18px;
-  position:relative;
-}
-.skill-list li::before{
-  content:"";
-  position:absolute; left:0; top:9px;
-  width:6px; height:1px;
-  background:var(--gold-500);
-}
-
 .activity-list{
   display:flex;
   flex-direction:column;
@@ -682,6 +652,71 @@ img,svg{max-width:100%; display:block;}
   font-size:12px;
   color:var(--slate-dark);
   padding:18px 0;
+}
+
+/* =========================================
+   Skills Side Drawer Styles
+   ========================================= */
+.skills-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--navy-950);
+  border-left: 1px solid var(--navy-700);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -15px 0 40px rgba(8, 18, 38, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.skills-drawer.open {
+  transform: translateX(0);
+}
+
+.skills-drawer-header {
+  padding: 32px;
+  border-bottom: 1px solid var(--navy-700);
+  background: var(--navy-900);
+}
+
+.skills-drawer-header h2 {
+  margin: 0;
+  color: var(--gold-300);
+  font-family: var(--serif);
+  font-size: 26px;
+}
+
+.skills-drawer-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.drawer-skill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-skill-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--gold-500);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.drawer-skill-items {
+  color: #D6DAE6;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 /* Print Styles for Recruiters */
@@ -1092,38 +1127,9 @@ img,svg{max-width:100%; display:block;}
   </div>
 </section>
 
-<section class="section section-dark" id="skills">
-  <div class="container fade-up">
-    <p class="section-label">06 — Skills</p>
-    <div class="skills-grid">
-      <div class="skills-col">
-        <h3>Technical</h3>
-        <ul class="skill-list">
-          <li>Advanced Excel — VLOOKUP, pivot tables, scenario analysis</li>
-          <li>Financial modelling — DCF, comparable company analysis</li>
-          <li>Regulatory &amp; compliance documentation — SEBI / KYC</li>
-          <li>Power BI fundamentals</li>
-          <li>Financial accounting</li>
-          <li>MS Office &amp; data reporting</li>
-        </ul>
-      </div>
-      <div class="skills-col">
-        <h3>Soft skills</h3>
-        <ul class="skill-list">
-          <li>Client service &amp; query resolution</li>
-          <li>Attention to detail &amp; accuracy</li>
-          <li>Team collaboration</li>
-          <li>Organised in fast-paced environments</li>
-          <li>Self-motivated</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section section-light" id="activities">
   <div class="container narrow fade-up">
-    <p class="section-label">07 — Activities</p>
+    <p class="section-label">06 — Activities</p>
     <ul class="activity-list">
       <li><strong>Top 1% performer</strong> — Research Methodology and Business Ethics, NPTEL (IIT Madras).</li>
       <li><strong>Rotaract Club member</strong>, Arka Jain University — engaged in social &amp; community programs.</li>
@@ -1152,6 +1158,36 @@ img,svg{max-width:100%; display:block;}
   </div>
   <p class="footer-copy">© 2026 Sushil Kumar Singh.</p>
 </footer>
+
+<!-- SKILLS SIDE DRAWER -->
+<aside id="skills-drawer" class="skills-drawer" aria-hidden="true">
+  <div class="skills-drawer-header">
+    <h2>Skills & Expertise</h2>
+  </div>
+  <div class="skills-drawer-content">
+    
+    <div class="drawer-skill-group">
+      <h3 class="drawer-skill-title">Accounting & Finance</h3>
+      <p class="drawer-skill-items">Financial Accounting &bull; Financial Statement Analysis &bull; 3-Statement Modelling &bull; DCF & Equity Valuation &bull; WACC & CAPM &bull; Ratio Analysis</p>
+    </div>
+    
+    <div class="drawer-skill-group">
+      <h3 class="drawer-skill-title">Banking & Financial Operations</h3>
+      <p class="drawer-skill-items">Mutual Fund Operations &bull; BSE STAR MF &bull; Transaction Processing & Reconciliation &bull; KYC Documentation &bull; SEBI Compliance &bull; Client Servicing</p>
+    </div>
+    
+    <div class="drawer-skill-group">
+      <h3 class="drawer-skill-title">Tools & Data Analytics</h3>
+      <p class="drawer-skill-items">Advanced Excel (VLOOKUP/XLOOKUP, Pivot Tables, Scenario Analysis) &bull; Power BI &bull; Tally &bull; MS PowerPoint & Word</p>
+    </div>
+    
+    <div class="drawer-skill-group">
+      <h3 class="drawer-skill-title">Business & Soft Skills</h3>
+      <p class="drawer-skill-items">Market & Industry Analysis &bull; Analytical Thinking &bull; Problem Solving &bull; Client Relationship Management &bull; Teamwork &bull; Adaptability &bull; Time Management</p>
+    </div>
+    
+  </div>
+</aside>
 
 <script>
 (function(){
@@ -1232,6 +1268,41 @@ img,svg{max-width:100%; display:block;}
     fadeElements.forEach(function(el){ fadeObserver.observe(el); });
   } else {
     fadeElements.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // Skills Drawer Hover Logic
+  var skillsTrigger = document.querySelector('a[href="#skills"]');
+  var skillsDrawer = document.getElementById('skills-drawer');
+  var drawerTimeout;
+
+  if(skillsTrigger && skillsDrawer) {
+    function openDrawer() {
+      clearTimeout(drawerTimeout);
+      skillsDrawer.classList.add('open');
+      skillsDrawer.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeDrawer() {
+      // 400ms delay gives the user time to move their mouse from the nav link over to the side drawer without it closing abruptly
+      drawerTimeout = setTimeout(function() {
+        skillsDrawer.classList.remove('open');
+        skillsDrawer.setAttribute('aria-hidden', 'true');
+      }, 400); 
+    }
+
+    // Listen for hover on the nav link
+    skillsTrigger.addEventListener('mouseenter', openDrawer);
+    skillsTrigger.addEventListener('mouseleave', closeDrawer);
+
+    // Keep it open if they move the mouse into the drawer itself
+    skillsDrawer.addEventListener('mouseenter', openDrawer);
+    skillsDrawer.addEventListener('mouseleave', closeDrawer);
+    
+    // Prevent the default anchor jump if they actually click it
+    skillsTrigger.addEventListener('click', function(e){
+      e.preventDefault();
+      openDrawer();
+    });
   }
 
 })();
