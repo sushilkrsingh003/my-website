@@ -446,24 +446,26 @@ img,svg{max-width:100%; display:block;}
   background:var(--navy-800);
   padding:12px;
 }
-.sim-photo{
-  width:84px;
-  flex-shrink:0;
-  border-radius:2px;
+
+/* ===== UPDATED CSS FOR SIMULATION LOGOS ===== */
+.sim-photo {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--serif);
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
+  overflow: hidden;
+  border: 1px solid var(--navy-700);
 }
-.sim-photo.gs { background: #7399C6; } 
-.sim-photo.ey { background: #FFE600; color: #2E2E38; font-family: var(--sans); } 
-.sim-photo.kpmg { background: #00338D; font-family: var(--sans); font-size: 22px; } 
-.sim-photo.wf { background: #D71E28; } 
-.sim-photo.sc { background: #00A546; } 
-.sim-photo.bofa { background: #012169; } 
+.sim-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
 
 .sim-content{
   display:flex;
@@ -1103,8 +1105,12 @@ img,svg{max-width:100%; display:block;}
     <p class="section-label">04 — Job simulations</p>
     <div class="sim-scroll">
       <div class="sim-row">
+        
+        <!-- ===== UPDATED WITH LOGO IMAGES ===== -->
         <div class="sim-card">
-          <div class="sim-photo gs">GS</div>
+          <div class="sim-photo">
+            <img src="assets/gs-logo.png" alt="Goldman Sachs Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">GS</span>
@@ -1118,7 +1124,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo ey">EY</div>
+          <div class="sim-photo">
+            <img src="assets/ey-logo.png" alt="EY Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">EY</span>
@@ -1132,7 +1140,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo ey">EY</div>
+          <div class="sim-photo">
+            <img src="assets/ey-logo.png" alt="EY Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">EY</span>
@@ -1146,7 +1156,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo kpmg">KPMG</div>
+          <div class="sim-photo">
+            <img src="assets/kpmg-logo.png" alt="KPMG Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">KPMG</span>
@@ -1160,7 +1172,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo wf">WF</div>
+          <div class="sim-photo">
+            <img src="assets/wf-logo.png" alt="Wells Fargo Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">WF</span>
@@ -1174,7 +1188,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo sc">SC</div>
+          <div class="sim-photo">
+            <img src="assets/sc-logo.png" alt="Standard Chartered Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">SC</span>
@@ -1188,7 +1204,9 @@ img,svg{max-width:100%; display:block;}
         </div>
 
         <div class="sim-card">
-          <div class="sim-photo bofa">BofA</div>
+          <div class="sim-photo">
+            <img src="assets/bofa-logo.png" alt="Bank of America Logo">
+          </div>
           <div class="sim-content">
             <div class="sim-top-row">
               <span class="sim-logo-tag">BofA</span>
@@ -1200,6 +1218,7 @@ img,svg{max-width:100%; display:block;}
             <a class="sim-verify-btn" href="https://www.theforage.com/completion-certificates/fMCqmt8qR4G85Puue/Hi8MJQE5T3MeTRWQR_fMCqmt8qR4G85Puue_GZzhaKNWEFospqxee_1759155114638_completion_certificate.pdf" target="_blank" rel="noopener">View details →</a>
           </div>
         </div>
+
       </div>
     </div>
     <p class="sim-hint">Scroll → for more</p>
