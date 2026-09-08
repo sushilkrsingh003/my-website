@@ -732,7 +732,7 @@ img,svg{max-width:100%; display:block;}
 }
 
 @media print {
-  .site-header, .ticker, .hero-actions, .sim-scroll, .site-footer {
+  .site-header, .ticker, .hero-actions, .sim-scroll, .site-footer, .chatbot-fab, .chatbot-window {
     display: none !important;
   }
   body, .section-dark, .section-light, .hero, .mini-dash, .sim-card {
@@ -795,6 +795,155 @@ img,svg{max-width:100%; display:block;}
   .footer-grid{flex-direction:column; align-items:flex-start;}
   .sim-card{flex-basis:250px;}
   .typing-wrapper { min-height: 140px; }
+}
+
+/* ===== CHATBOT WIDGET ===== */
+.chatbot-fab{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:var(--gold-500);
+  color:var(--navy-950);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 24px rgba(8,18,38,0.35);
+  border:none;
+  cursor:pointer;
+  z-index:200;
+  transition:background-color .18s ease, transform .18s ease;
+}
+.chatbot-fab:hover{background:var(--gold-300); transform:scale(1.05);}
+.chatbot-fab svg{width:26px; height:26px;}
+
+.chatbot-window{
+  position:fixed;
+  bottom:96px;
+  right:24px;
+  width:340px;
+  max-width:calc(100vw - 32px);
+  height:460px;
+  max-height:calc(100vh - 140px);
+  background:var(--paper);
+  border:1px solid var(--navy-700);
+  border-radius:8px;
+  box-shadow:0 24px 48px rgba(8,18,38,0.35);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  z-index:200;
+}
+.chatbot-window.open{display:flex;}
+.chatbot-header{
+  background:var(--navy-900);
+  color:#fff;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-shrink:0;
+}
+.chatbot-header-title{
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--gold-300);
+}
+.chatbot-header-sub{
+  font-family:var(--mono);
+  font-size:10.5px;
+  color:#9EA9C0;
+  margin-top:2px;
+}
+.chatbot-close{
+  background:none;
+  border:none;
+  color:#C4CBDA;
+  font-size:20px;
+  line-height:1;
+  padding:0 4px;
+}
+.chatbot-close:hover{color:#fff;}
+.chatbot-body{
+  flex:1;
+  overflow-y:auto;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.chatbot-msg{
+  max-width:82%;
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:13.5px;
+  line-height:1.5;
+}
+.chatbot-msg.bot{
+  background:#fff;
+  border:1px solid var(--paper-2);
+  color:var(--ink);
+  align-self:flex-start;
+  border-bottom-left-radius:2px;
+}
+.chatbot-msg.user{
+  background:var(--navy-900);
+  color:#fff;
+  align-self:flex-end;
+  border-bottom-right-radius:2px;
+}
+.chatbot-suggestions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:0 14px 12px;
+  flex-shrink:0;
+}
+.chatbot-chip{
+  background:#fff;
+  border:1px solid var(--gold-500);
+  color:var(--navy-900);
+  font-size:11.5px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:20px;
+}
+.chatbot-chip:hover{background:var(--gold-500); color:var(--navy-950);}
+.chatbot-input-row{
+  display:flex;
+  border-top:1px solid var(--paper-2);
+  flex-shrink:0;
+}
+.chatbot-input{
+  flex:1;
+  border:none;
+  padding:12px 14px;
+  font-family:var(--sans);
+  font-size:13.5px;
+  background:#fff;
+  color:var(--ink);
+}
+.chatbot-input:focus{outline:none;}
+.chatbot-send{
+  background:var(--gold-500);
+  color:var(--navy-950);
+  border:none;
+  padding:0 18px;
+  font-weight:700;
+  font-size:13px;
+}
+.chatbot-send:hover{background:var(--gold-300);}
+
+@media (max-width:480px){
+  .chatbot-window{
+    right:16px;
+    left:16px;
+    width:auto;
+    bottom:86px;
+  }
+  .chatbot-fab{right:16px; bottom:16px;}
 }
 </style>
 <!-- Include Typed.js for the typing effect -->
@@ -939,7 +1088,7 @@ img,svg{max-width:100%; display:block;}
           <h3>Nestlé India — Equity Valuation &amp; Fundamental Analysis</h3>
           <span class="tag">Academic Research / Equity Valuation</span>
         </div>
-        <p>Authored a comprehensive academic research report analyzing the FMCG sector. Performed DCF valuation and ROIC-WACC spread analysis to determine intrinsic value. Evaluated strategic positioning using Porter’s Five Forces and benchmarked financial performance against industry peers like HUL, ITC, and Britannia.</p>
+        <p>Authored a comprehensive academic research report analyzing the FMCG sector. Performed DCF valuation and ROIC-WACC spread analysis to determine intrinsic value. Evaluated strategic positioning using Porter's Five Forces and benchmarked financial performance against industry peers like HUL, ITC, and Britannia.</p>
         <div class="project-link-row">
           <a class="project-link-btn" href="https://drive.google.com/file/d/1p-ladovIeQWBJONUVkzb3QKChPDhPB8u/view?usp=drivesdk" target="_blank" rel="noopener">Read Research Report</a>
         </div>
@@ -1216,6 +1365,29 @@ img,svg{max-width:100%; display:block;}
   <p class="footer-copy">© 2026 Sushil Kumar Singh.</p>
 </footer>
 
+<!-- ===== CHATBOT WIDGET MARKUP ===== -->
+<button class="chatbot-fab" id="chatbot-fab" aria-label="Open chat">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<div class="chatbot-window" id="chatbot-window">
+  <div class="chatbot-header">
+    <div>
+      <div class="chatbot-header-title">Ask about Sushil</div>
+      <div class="chatbot-header-sub">Quick answers · not a real person</div>
+    </div>
+    <button class="chatbot-close" id="chatbot-close" aria-label="Close chat">×</button>
+  </div>
+  <div class="chatbot-body" id="chatbot-body"></div>
+  <div class="chatbot-suggestions" id="chatbot-suggestions"></div>
+  <div class="chatbot-input-row">
+    <input type="text" class="chatbot-input" id="chatbot-input" placeholder="Type a question…" autocomplete="off">
+    <button class="chatbot-send" id="chatbot-send">Send</button>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -1350,6 +1522,118 @@ img,svg{max-width:100%; display:block;}
       }
     });
   }
+
+  // ===== Simple FAQ Chatbot (no signup, rule-based) =====
+  (function(){
+    var faq = [
+      { keys:["education","study","degree","college","university","cgpa","grade","qualification"],
+        answer:"Sushil holds a BBA in Finance from Arka Jain University (2026, 8.93 CGPA). He completed his 12th (79.80%) and 10th (84.60%) from CBSE, Jawahar Navodaya Vidyalaya." },
+      { keys:["experience","internship","intern","work","job history","sawa","procapitas"],
+        answer:"He interned as a Finance Intern at Sawa Financial Distribution (Jun–Jul 2025), handling 100+ mutual fund transactions with zero errors, and as a Research Intern at ProCapitas (Sep–Oct 2025), building DCF and post-merger models." },
+      { keys:["skill","skills","excel","tools","power bi","technical"],
+        answer:"Core skills include Advanced Excel, financial modelling (DCF, 3-statement, comps), SEBI/KYC compliance, Power BI, and client servicing." },
+      { keys:["project","projects","nestle","varun","valuation","dcf"],
+        answer:"His featured projects are a Varun Beverages financial model (FCFF/DCF, DuPont, Altman Z-Score, Monte Carlo VaR) and a Nestlé India equity valuation report (DCF, Porter's Five Forces, peer comps). Both are linked in the Projects section above." },
+      { keys:["certification","certificate","cfi","wharton","mckinsey","course"],
+        answer:"He holds certifications from CFI (Financial Analysis & Modelling), Wharton Online (Corporate Finance), McKinsey Forward Program, a Diploma in Computer Applications, and NIIT×UNICEF Digital Productivity — all shown in the Certifications section." },
+      { keys:["simulation","forage","goldman","ey","kpmg","wells fargo","standard chartered","bank of america","bofa"],
+        answer:"He's completed job simulations with Goldman Sachs, EY (Forensics & Audit), KPMG, Wells Fargo, Standard Chartered, and Bank of America — each verifiable via the 'View details' links in the Simulations section." },
+      { keys:["contact","email","phone","reach","hire","linkedin"],
+        answer:"You can reach Sushil at sushilkrsingh7061@gmail.com, +91 70617 07350, or connect on LinkedIn (linkedin.com/in/sushilkrsingh03)." },
+      { keys:["resume","cv","download"],
+        answer:"You can download his résumé using the 'Download résumé' button in the top navigation or footer." },
+      { keys:["location","based","jamshedpur","relocate","relocation"],
+        answer:"Sushil is based in Jamshedpur, India, and is open to relocation for the right role." },
+      { keys:["hello","hi","hey","namaste"],
+        answer:"Hi there! Ask me about Sushil's education, experience, skills, projects, certifications, or how to get in touch." }
+    ];
+
+    var fallback = "I don't have an answer for that — try asking about his education, experience, skills, projects, certifications, or contact details. Or email him directly at sushilkrsingh7061@gmail.com.";
+
+    var suggestionSet = [
+      {label:"Education", query:"education"},
+      {label:"Experience", query:"experience"},
+      {label:"Skills", query:"skills"},
+      {label:"Projects", query:"projects"},
+      {label:"Certifications", query:"certifications"},
+      {label:"Contact", query:"contact"}
+    ];
+
+    var fab = document.getElementById("chatbot-fab");
+    var win = document.getElementById("chatbot-window");
+    var closeBtn = document.getElementById("chatbot-close");
+    var body = document.getElementById("chatbot-body");
+    var suggestionsBar = document.getElementById("chatbot-suggestions");
+    var input = document.getElementById("chatbot-input");
+    var sendBtn = document.getElementById("chatbot-send");
+    var greeted = false;
+
+    function addMessage(text, sender){
+      var msg = document.createElement("div");
+      msg.className = "chatbot-msg " + sender;
+      msg.textContent = text;
+      body.appendChild(msg);
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function renderSuggestions(){
+      suggestionsBar.innerHTML = "";
+      suggestionSet.forEach(function(s){
+        var chip = document.createElement("button");
+        chip.className = "chatbot-chip";
+        chip.textContent = s.label;
+        chip.addEventListener("click", function(){
+          addMessage(s.label, "user");
+          respond(s.query);
+        });
+        suggestionsBar.appendChild(chip);
+      });
+    }
+
+    function findAnswer(text){
+      var lower = text.toLowerCase();
+      for(var i=0;i<faq.length;i++){
+        for(var j=0;j<faq[i].keys.length;j++){
+          if(lower.indexOf(faq[i].keys[j]) !== -1){
+            return faq[i].answer;
+          }
+        }
+      }
+      return fallback;
+    }
+
+    function respond(text){
+      setTimeout(function(){
+        addMessage(findAnswer(text), "bot");
+      }, 350);
+    }
+
+    function openChat(){
+      win.classList.add("open");
+      if(!greeted){
+        addMessage("Hi! I can answer quick questions about Sushil's background — education, experience, skills, projects, certifications or contact info.", "bot");
+        renderSuggestions();
+        greeted = true;
+      }
+      input.focus();
+    }
+
+    fab.addEventListener("click", openChat);
+    closeBtn.addEventListener("click", function(){ win.classList.remove("open"); });
+
+    function handleSend(){
+      var text = input.value.trim();
+      if(!text) return;
+      addMessage(text, "user");
+      input.value = "";
+      respond(text);
+    }
+
+    sendBtn.addEventListener("click", handleSend);
+    input.addEventListener("keydown", function(e){
+      if(e.key === "Enter") handleSend();
+    });
+  })();
 
 })();
 </script>
